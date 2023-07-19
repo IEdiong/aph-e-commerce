@@ -8,6 +8,8 @@ import {
   VStack,
   Flex,
   Input,
+  FormControl,
+  FormLabel,
 } from '@/utils/chakra-components';
 
 export default function DesignSystem() {
@@ -97,8 +99,14 @@ export default function DesignSystem() {
           <Box as='section' mt='8'>
             <Heading mb='8'>FORM ELEMENTS</Heading>
             <HStack>
-              <Input placeholder={'Insert your name'} />
-              <Input isInvalid />
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input placeholder={'Insert your name'} />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input isInvalid />
+              </FormControl>
             </HStack>
           </Box>
         </Box>

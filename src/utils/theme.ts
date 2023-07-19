@@ -2,6 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 import Heading from './heading';
 import Text from './text';
 import Cta from './cta';
+import FormLabel from './form-label';
 import { inputTheme } from './input';
 
 // Colors
@@ -44,6 +45,7 @@ export const theme = extendTheme({
     Heading,
     Text,
     Cta,
+    FormLabel,
     Input: inputTheme,
   },
   config: {
