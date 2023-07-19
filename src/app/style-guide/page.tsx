@@ -1,4 +1,6 @@
-import { Box, Heading, Text, VStack } from '@/utils/chakra-components';
+import Cta from '@/components/cta';
+import ShopLink from '@/components/shop-link';
+import { Box, HStack, Heading, Text, VStack } from '@/utils/chakra-components';
 
 export default function DesignSystem() {
   return (
@@ -64,6 +66,17 @@ export default function DesignSystem() {
           Fusce ut est sed dolor gravida convallis
         </Text>
       </VStack>
+      <HStack mt='12' spacing={4} align={'center'}>
+        <Cta variant='solid' w='160px'>
+          See Product
+        </Cta>
+        <Cta variant='outline' w='160px'>
+          See Product
+        </Cta>
+        <ShopLink to='/' w='160px'>
+          Shop
+        </ShopLink>
+      </HStack>
     </Box>
   );
 }

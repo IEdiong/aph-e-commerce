@@ -68,6 +68,7 @@ import {
   AvatarBadge,
   useRadio,
   useRadioGroup,
+  useStyleConfig,
 } from '@chakra-ui/react';
 import { Link } from '@chakra-ui/next-js';
 
@@ -130,6 +131,7 @@ export {
   EditableInput,
   Avatar,
   AvatarBadge,
+  useStyleConfig,
   AccordionIcon,
   useColorModeValue,
   useDisclosure,

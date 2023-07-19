@@ -1,6 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 import Heading from './heading';
 import Text from './text';
+import Cta from './cta';
 
 // Colors
 const colors = {
@@ -35,20 +36,13 @@ const fontSizes = {
   '6xl': '3.5rem',
 };
 
-// Components
-const components = {
-  // Heading
-  Heading: {
-    variants: {},
-  },
-};
-
 export const theme = extendTheme({
   colors,
   fontSizes,
   components: {
     Heading,
     Text,
+    Cta,
   },
   config: {
     cssVarPrefix: 'aph',
