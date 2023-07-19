@@ -2,6 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 import Heading from './heading';
 import Text from './text';
 import Cta from './cta';
+import { inputTheme } from './input';
 
 // Colors
 const colors = {
@@ -43,6 +44,7 @@ export const theme = extendTheme({
     Heading,
     Text,
     Cta,
+    Input: inputTheme,
   },
   config: {
     cssVarPrefix: 'aph',
