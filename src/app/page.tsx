@@ -8,6 +8,8 @@ import {
   Container,
   Box,
   VStack,
+  Grid,
+  GridItem,
 } from '@/utils/chakra-components';
 
 export default function Home() {
@@ -17,7 +19,7 @@ export default function Home() {
         <Box mt="120px" mb="168px">
           <FeatureProducts />
         </Box>
-        <VStack>
+        <VStack spacing="12" align="stretch">
           <Box
             as="section"
             borderRadius="lg"
@@ -54,6 +56,56 @@ export default function Home() {
               </Cta>
             </Box>
           </Box>
+          <Grid
+            columnGap="30px"
+            rowGap="12"
+            templateColumns={'repeat(2, 1fr)'}
+            autoRows="minmax(320px, auto)"
+          >
+            <GridItem colSpan={2}>
+              <Box
+                w="full"
+                pl="95px"
+                py="101px"
+                borderRadius="lg"
+                bgColor="aph.neutral.100"
+                bgImage={"url('/assets/home/desktop/image-speaker-zx7.jpg')"}
+              >
+                <Heading as="h2" variant="h4">
+                  ZX7 SPEAKER
+                </Heading>
+                <Cta variant="outline" w="160px" mt="32px">
+                  See Product
+                </Cta>
+              </Box>
+            </GridItem>
+            <GridItem colSpan={1}>
+              <Box
+                w="full"
+                h="full"
+                borderRadius="lg"
+                bgColor="aph.black.900"
+                bgImage={`
+                url('/assets/home/desktop/image-earphones-yx1.jpg')`}
+              ></Box>
+            </GridItem>
+            <GridItem colSpan={1}>
+              <Box
+                w="full"
+                pl="95px"
+                py="101px"
+                borderRadius="lg"
+                bgColor="aph.neutral.100"
+              >
+                <Heading as="h2" variant="h4">
+                  YX1 EARPHONES
+                </Heading>
+                <Cta variant="outline" w="160px" mt="32px">
+                  See Product
+                </Cta>
+              </Box>
+            </GridItem>
+          </Grid>
         </VStack>
       </Container>
       <Flex

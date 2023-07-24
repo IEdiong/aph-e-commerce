@@ -31,6 +31,7 @@ const Cta = defineStyleConfig({
       _hover: {
         bg: 'aph.black.900',
         color: 'aph.white',
+        borderColor: 'transparent',
       },
     },
     black: {
