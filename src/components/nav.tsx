@@ -9,7 +9,7 @@ import {
 
 const NavBar = () => {
   return (
-    <Box as="nav" bgColor="aph.black.900" color="aph.white">
+    <Box as="nav" bgColor="transparent" color="aph.white">
       <Container
         maxW={{ lg: 'container.lg' }}
         px="0"

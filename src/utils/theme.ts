@@ -19,6 +19,7 @@ const colors = {
     },
     white: '#FFFFFF',
     black: {
+      300: '#0E0E0E',
       500: '#101010',
       900: '#000000',
     },
