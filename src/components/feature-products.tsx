@@ -3,7 +3,12 @@ import ShopLink from './shop-link';
 
 const FeatureProducts = () => {
   return (
-    <Flex columnGap="30px" justify="space-between" align="baseline">
+    <Flex
+      as="section"
+      columnGap="30px"
+      justify="space-between"
+      align="baseline"
+    >
       <VStack align="center" spacing="15px" w="full" h="284px" pos="relative">
         <Box w="65%" pos="absolute" zIndex="10">
           <Image

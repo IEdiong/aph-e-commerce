@@ -33,6 +33,14 @@ const Cta = defineStyleConfig({
         color: 'aph.white',
       },
     },
+    black: {
+      fontSize: 'xs',
+      bg: 'aph.black.900',
+      color: 'aph.white',
+      _hover: {
+        bg: '#4C4C4C',
+      },
+    },
   },
   // The default `size` or `variant` values
   defaultProps: {

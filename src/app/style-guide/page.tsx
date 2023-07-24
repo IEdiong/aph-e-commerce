@@ -91,6 +91,9 @@ export default function DesignSystem() {
               <Cta variant="outline" w="160px">
                 See Product
               </Cta>
+              <Cta variant="black" w="160px">
+                See Product
+              </Cta>
               <ShopLink to="/" w="160px">
                 Shop
               </ShopLink>
