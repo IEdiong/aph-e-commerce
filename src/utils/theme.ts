@@ -4,6 +4,7 @@ import Text from './text';
 import Cta from './cta';
 import FormLabel from './form-label';
 import { inputTheme } from './input';
+import Link from './link';
 
 // Colors
 const colors = {
@@ -40,12 +41,10 @@ const fontSizes = {
 
 // Container Size
 const sizes = {
-  sizes: {
-    container: {
-      sm: '327px',
-      md: '689px',
-      lg: '1110px',
-    },
+  container: {
+    sm: '327px',
+    md: '689px',
+    lg: '1110px',
   },
 };
 
@@ -58,6 +57,7 @@ export const theme = extendTheme({
     Text,
     Cta,
     FormLabel,
+    Link,
     Input: inputTheme,
   },
   config: {
