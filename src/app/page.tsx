@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Link, Flex } from '@/utils/chakra-components';
+import { Heading, Text, Link, Flex } from '@/utils/chakra-components';
 
 export default function Home() {
   return (

@@ -19,7 +19,7 @@ const baseStyle = definePartsStyle({
   },
 });
 
-const variantOutline = definePartsStyle((props) => {
+const variantOutline = definePartsStyle(() => {
   return {
     field: {
       fontFamily: 'inherit',
