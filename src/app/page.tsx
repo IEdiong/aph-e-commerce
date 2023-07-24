@@ -1,5 +1,6 @@
 import Cta from '@/components/cta';
 import FeatureProducts from '@/components/feature-products';
+import InfoSection from '@/components/info-section';
 import {
   Heading,
   Text,
@@ -107,6 +108,9 @@ export default function Home() {
             </GridItem>
           </Grid>
         </VStack>
+        <Box my="200px">
+          <InfoSection />
+        </Box>
       </Container>
       <Flex
         as="section"
