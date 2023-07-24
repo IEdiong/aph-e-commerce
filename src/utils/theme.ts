@@ -38,9 +38,21 @@ const fontSizes = {
   '6xl': '3.5rem',
 };
 
+// Container Size
+const sizes = {
+  sizes: {
+    container: {
+      sm: '327px',
+      md: '689px',
+      lg: '1110px',
+    },
+  },
+};
+
 export const theme = extendTheme({
   colors,
   fontSizes,
+  sizes,
   components: {
     Heading,
     Text,
