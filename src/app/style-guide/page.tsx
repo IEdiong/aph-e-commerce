@@ -14,30 +14,30 @@ import {
 
 export default function DesignSystem() {
   return (
-    <Box as='main' p='8'>
+    <Box as="main" p="8">
       <Flex justify={'flex-start'} columnGap={'200px'}>
         <Box>
-          <VStack as='section' w='516px' spacing='40px' align={'flex-start'}>
-            <Heading variant={'h1'} as='h1'>
+          <VStack as="section" w="516px" spacing="40px" align={'flex-start'}>
+            <Heading variant={'h1'} as="h1">
               Morbi interdum mollis sapien
             </Heading>
-            <Heading variant={'h2'} as='h2'>
+            <Heading variant={'h2'} as="h2">
               Donec nec justo eget felis facilisis
             </Heading>
-            <Heading variant={'h3'} as='h3'>
+            <Heading variant={'h3'} as="h3">
               Nunc sem lacus accum
             </Heading>
-            <Heading variant={'h4'} as='h4'>
+            <Heading variant={'h4'} as="h4">
               interdum consectetuer
             </Heading>
-            <Heading variant={'h5'} as='h5'>
+            <Heading variant={'h5'} as="h5">
               nascetur ridiculus mus
             </Heading>
-            <Heading variant={'h6'} as='h6'>
+            <Heading variant={'h6'} as="h6">
               natoque penatibus et
             </Heading>
           </VStack>
-          <VStack as='section' w='516px' align={'flex-start'} mt='40px'>
+          <VStack as="section" w="516px" align={'flex-start'} mt="40px">
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
               Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi
@@ -73,31 +73,31 @@ export default function DesignSystem() {
               tellus. Suspendisse laoreet. Fusce ut est sed dolor gravida
               convallis.
             </Text>
-            <Text variant={'overline'} as='span'>
+            <Text variant={'overline'} as="span">
               LOREM IPSUM
             </Text>
-            <Text variant={'sub-title'} as='span'>
+            <Text variant={'sub-title'} as="span">
               Fusce ut est sed dolor gravida convallis
             </Text>
           </VStack>
         </Box>
         <Box flexShrink={1} flexGrow={1}>
-          <Box as='section'>
-            <Heading mb='8'>Buttons</Heading>
+          <Box as="section">
+            <Heading mb="8">Buttons</Heading>
             <HStack spacing={4} align={'center'}>
-              <Cta variant='solid' w='160px'>
+              <Cta variant="solid" w="160px">
                 See Product
               </Cta>
-              <Cta variant='outline' w='160px'>
+              <Cta variant="outline" w="160px">
                 See Product
               </Cta>
-              <ShopLink to='/' w='160px'>
+              <ShopLink to="/" w="160px">
                 Shop
               </ShopLink>
             </HStack>
           </Box>
-          <Box as='section' mt='8'>
-            <Heading mb='8'>FORM ELEMENTS</Heading>
+          <Box as="section" mt="8">
+            <Heading mb="8">FORM ELEMENTS</Heading>
             <HStack>
               <FormControl>
                 <FormLabel>Name</FormLabel>

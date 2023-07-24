@@ -16,7 +16,7 @@ const ShopLink = ({ to, ...props }: ShopLinkProps) => {
       _hover={{
         textDecoration: 'none',
       }}
-      className='link'
+      className="link"
     >
       <Text
         fontSize={'xs'}
@@ -31,7 +31,7 @@ const ShopLink = ({ to, ...props }: ShopLinkProps) => {
       >
         {props.children}
       </Text>
-      <ArrowIcon w='8px' h='12px' />
+      <ArrowIcon w="8px" h="12px" />
     </Link>
   );
 };

@@ -4,7 +4,7 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 const Head = ({ fontFam }: { fontFam: NextFont }) => {
   return (
     <head>
-      <link rel='icon' sizes='32x32' />
+      <link rel="icon" sizes="32x32" />
       <style jsx global>
         {`
           :root {

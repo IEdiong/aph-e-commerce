@@ -12,7 +12,7 @@ const Cta: FC<CtaProps> = ({ variant, ...rest }) => {
   return (
     <Box __css={styles} {...rest}>
       <Link
-        href='/'
+        href="/"
         paddingBlock={'15px'}
         display={'inherit'}
         _hover={{
