@@ -7,9 +7,13 @@ import {
   Link,
 } from '@/utils/chakra-components';
 
-const NavBar = () => {
+const NavBar = ({
+  bgColor = 'transparent',
+}: {
+  bgColor?: 'transparent' | 'aph.black.900';
+}) => {
   return (
-    <Box as="nav" bgColor="transparent" color="aph.white">
+    <Box as="nav" bgColor={bgColor} color="aph.white">
       <Container
         maxW={{ lg: 'container.lg' }}
         px="0"

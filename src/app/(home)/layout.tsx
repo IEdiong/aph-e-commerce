@@ -1,7 +1,7 @@
-import './globals.css';
+import '../globals.css';
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
-import { Providers } from './providers';
+import { Providers } from '../providers';
 import NavBar from '@/components/nav';
 import { Box, Container, Heading, Text } from '@/utils/chakra-components';
 import Cta from '@/components/cta';
