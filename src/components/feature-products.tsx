@@ -85,7 +85,7 @@ const FeatureProducts = () => {
           <Heading as="h6" variant="h6">
             EARPHONES
           </Heading>
-          <ShopLink to="/" w="160px">
+          <ShopLink to="/earphones" w="160px">
             Shop
           </ShopLink>
         </VStack>
