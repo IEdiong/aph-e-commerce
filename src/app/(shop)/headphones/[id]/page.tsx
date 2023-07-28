@@ -6,6 +6,7 @@ import { Box, Container, Flex, VStack } from '@/utils/chakra-components';
 import NavigateBack from '@/components/navigate-back';
 import Features from '@/components/features';
 import InTheBox from '@/components/in-the-box';
+import MoreProducts from '@/components/more-products';
 
 const HeadphoneDetail = () => {
   return (
@@ -27,6 +28,7 @@ const HeadphoneDetail = () => {
             <Features />
             <InTheBox />
           </Flex>
+          <MoreProducts />
           <FeatureProducts />
           <InfoSection />
         </VStack>
