@@ -7,6 +7,7 @@ import NavigateBack from '@/components/navigate-back';
 import Features from '@/components/features';
 import InTheBox from '@/components/in-the-box';
 import MoreProducts from '@/components/more-products';
+import Gallery from '@/components/gallery';
 
 const HeadphoneDetail = () => {
   return (
@@ -28,6 +29,11 @@ const HeadphoneDetail = () => {
             <Features />
             <InTheBox />
           </Flex>
+          <Gallery
+            imgOne="/assets/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg"
+            imgTwo="/assets/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg"
+            imgThree="/assets/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg"
+          />
           <MoreProducts />
           <FeatureProducts />
           <InfoSection />

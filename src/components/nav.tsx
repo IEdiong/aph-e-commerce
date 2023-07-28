@@ -43,9 +43,9 @@ const NavBar = ({
             transform="translateX(-50%)"
           >
             <NavItem text="home" />
-            <NavItem text="Headphones" />
-            <NavItem text="Speakers" />
-            <NavItem text="Earphones" />
+            <NavItem text="Headphones" to="/headphones" />
+            <NavItem text="Speakers" to="/speakers" />
+            <NavItem text="Earphones" to="/earphones" />
           </HStack>
           <Link href="/">
             <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
