@@ -48,7 +48,7 @@ export default function RootLayout({
                   Experience natural, lifelike audio and exceptional build
                   quality made for the passionate music enthusiast.
                 </Text>
-                <Cta variant="solid" w="160px" mt="40px">
+                <Cta to="/headphones/1" variant="solid" w="160px" mt="40px">
                   See Product
                 </Cta>
               </Box>

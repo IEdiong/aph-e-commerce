@@ -1,3 +1,4 @@
+'use client';
 import {
   Box,
   Flex,
@@ -5,8 +6,11 @@ import {
   Image,
   VStack,
   Text,
+  HStack,
 } from '@/utils/chakra-components';
 import Cta from './cta';
+import { useState } from 'react';
+import Counter from './counter';
 
 const ProductCard = ({
   productImageUrl = '/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg',
@@ -14,7 +18,29 @@ const ProductCard = ({
   summaryDescription = 'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
   direction = 'left-to-right',
   isNew = false,
+  canAddToCart = false,
+  productPrice = 0,
 }: ProductCardProps) => {
+  const [price, setPrice] = useState<number>(productPrice);
+  const [count, setCount] = useState(1);
+  const initailPrice = productPrice;
+
+  const handleIncrement = () => {
+    let newCount = count + 1;
+    let newPrice = initailPrice * newCount;
+    setPrice(newPrice);
+    setCount(newCount);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      let newCount = count - 1;
+      let newPrice = price - initailPrice;
+      setPrice(newPrice);
+      setCount(newCount);
+    }
+  };
+
   return (
     <Flex
       flexDir={{ lg: direction == 'left-to-right' ? 'row' : 'row-reverse' }}
@@ -35,9 +61,23 @@ const ProductCard = ({
           {productName}
         </Heading>
         <Text opacity="0.5">{summaryDescription}</Text>
-        <Cta variant="solid" w="160px" mt={2}>
-          See Product
-        </Cta>
+        {canAddToCart && (
+          <Text fontSize="lg" fontWeight="bold" mb="7px">
+            <span>$</span> {price}
+          </Text>
+        )}
+        <HStack spacing={4} align="stretch" mt={2}>
+          {canAddToCart && (
+            <Counter
+              increment={handleIncrement}
+              decrement={handleDecrement}
+              currentCount={count}
+            />
+          )}
+          <Cta variant="solid" w="160px">
+            See Product
+          </Cta>
+        </HStack>
       </VStack>
     </Flex>
   );
@@ -46,9 +86,11 @@ const ProductCard = ({
 interface ProductCardProps {
   productImageUrl: string;
   productName: string;
+  productPrice?: number;
   summaryDescription: string;
   isNew?: boolean;
   direction?: 'left-to-right' | 'right-to-left';
+  canAddToCart?: boolean;
 }
 
 export default ProductCard;

@@ -5,14 +5,15 @@ import { FC } from 'react';
 
 interface CtaProps extends LinkProps {
   variant?: string;
+  to?: string;
 }
 
-const Cta: FC<CtaProps> = ({ variant, ...rest }) => {
+const Cta: FC<CtaProps> = ({ variant, to = '/', ...rest }) => {
   const styles = useStyleConfig('Cta', { variant });
   return (
     <Box __css={styles} {...rest}>
       <Link
-        href="/"
+        href={to}
         paddingBlock={'15px'}
         display={'inherit'}
         _hover={{
@@ -26,14 +27,3 @@ const Cta: FC<CtaProps> = ({ variant, ...rest }) => {
 };
 
 export default Cta;
-
-// display="flex"
-// borderWidth="1px"
-// py={{ base: 3, md: '13px', lg: 4 }}
-// px="4"
-// bg={props.bgColor ? 'vfc.white' : props.bgColor}
-// justifyContent="center"
-// _hover={{
-//   textDecoration: 'none',
-//   backgroundColor: 'gray.100',
-// }}
