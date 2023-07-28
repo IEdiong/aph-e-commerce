@@ -1,32 +1,18 @@
-'use client';
-import { useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
 import ProductCard from '@/components/product-card';
 import { Box, Container, VStack } from '@/utils/chakra-components';
+import NavigateBack from '@/components/navigate-back';
 
 const HeadphoneDetail = () => {
-  const router = useRouter();
-
   return (
     <>
       <Box as="main">
         <Container maxW="container.lg" px="0" pb="160px" pt="79px">
-          <Box
-            as="button"
-            color="aph.black.900"
-            opacity="0.5"
-            fontSize="md"
-            fontWeight="medium"
-            lineHeight="25px"
-            _hover={{
-              color: 'aph.primary.100',
-              transition: 'color .4s ease-out',
-            }}
-            onClick={() => router.back()}
-          >
-            Go Back
-          </Box>
+          <Suspense fallback={null}>
+            <NavigateBack />
+          </Suspense>
           <VStack mt="56px" spacing="160px" align="stretch">
             <ProductCard
               productImageUrl="/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg"
