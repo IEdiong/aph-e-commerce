@@ -20,6 +20,7 @@ const EarphonesPage = () => {
               EARPHONES"
               summaryDescription="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
               isNew={true}
+              ctaLink={'/earphones/1'}
             />
             <FeatureProducts />
             <InfoSection />
