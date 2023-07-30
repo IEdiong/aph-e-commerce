@@ -20,6 +20,8 @@ const ProductCard = ({
   isNew = false,
   canAddToCart = false,
   productPrice = 0,
+  ctaText = 'See Product',
+  ctaLink = '/',
 }: ProductCardProps) => {
   const [price, setPrice] = useState<number>(productPrice);
   const [count, setCount] = useState(1);
@@ -74,8 +76,8 @@ const ProductCard = ({
               currentCount={count}
             />
           )}
-          <Cta variant="solid" w="160px">
-            See Product
+          <Cta variant="solid" w="160px" to={ctaLink}>
+            {ctaText}
           </Cta>
         </HStack>
       </VStack>
@@ -91,6 +93,8 @@ interface ProductCardProps {
   isNew?: boolean;
   direction?: 'left-to-right' | 'right-to-left';
   canAddToCart?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 export default ProductCard;

@@ -19,6 +19,7 @@ const HeadphonesPage = () => {
               productName="XX99 Mark II Headphones"
               summaryDescription="The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound."
               isNew={true}
+              ctaLink="/headphones/1"
             />
             <ProductCard
               productImageUrl="/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg"

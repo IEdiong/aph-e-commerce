@@ -20,6 +20,7 @@ const SpeakersPage = () => {
               SPEAKER"
               summaryDescription="Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups."
               isNew={true}
+              ctaLink={'/speakers/1'}
             />
             <ProductCard
               productImageUrl="/assets/product-zx7-speaker/desktop/image-category-page-preview.jpg"
