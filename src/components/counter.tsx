@@ -12,13 +12,35 @@ const Counter = ({
 }: CounterProps) => {
   return (
     <Flex columnGap="20px" px="15.5px" bg="aph.neutral.100" align="center">
-      <Box as="button" opacity="0.25" w="4" onClick={decrement}>
+      <Box
+        as="button"
+        opacity="0.25"
+        w="4"
+        fontWeight={'bold'}
+        transition={'color 0.2s linear'}
+        _hover={{
+          color: count > 1 ? 'aph.primary.100' : 'inherit',
+          opacity: count > 1 ? '1' : '0.25',
+        }}
+        onClick={decrement}
+      >
         -
       </Box>
       <Text w="4" textAlign="center">
         {count}
       </Text>
-      <Box as="button" opacity="0.25" w="4" onClick={increment}>
+      <Box
+        as="button"
+        opacity="0.25"
+        w="4"
+        fontWeight={'bold'}
+        transition={'color 0.2s linear'}
+        _hover={{
+          color: 'aph.primary.100',
+          opacity: '1',
+        }}
+        onClick={increment}
+      >
         +
       </Box>
     </Flex>

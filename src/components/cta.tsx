@@ -15,6 +15,7 @@ const Cta: FC<CtaProps> = ({ variant, to = '/', ...rest }) => {
       <Link
         href={to}
         paddingBlock={'15px'}
+        paddingInline={'20px'}
         display={'inherit'}
         _hover={{
           textDecoration: 'none',
