@@ -17,6 +17,7 @@ const Cta: FC<CtaProps> = ({ variant, to = '/', ...rest }) => {
         paddingBlock={'15px'}
         paddingInline={'20px'}
         display={'inherit'}
+        lineHeight={'normal'}
         _hover={{
           textDecoration: 'none',
         }}

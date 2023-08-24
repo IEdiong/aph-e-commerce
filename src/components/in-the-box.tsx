@@ -6,43 +6,29 @@ import {
   VStack,
 } from '@/utils/chakra-components';
 
-const InTheBox = () => {
+interface IncludesItem {
+  quantity: number;
+  item: string;
+}
+interface IProps {
+  includes: IncludesItem[];
+}
+
+const InTheBox = ({ includes }: IProps) => {
   return (
     <VStack as="section" spacing="32px" align="flex-start">
       <Heading as="h2" variant="h3">
         in the box
       </Heading>
       <List display="flex" flexDir="column" rowGap={2}>
-        <ListItem display="flex" columnGap="21px">
-          <Text as="span" color="aph.primary.100" w="18px">
-            1x
-          </Text>
-          <Text opacity="0.5">Headphone Unit</Text>
-        </ListItem>
-        <ListItem display="flex" columnGap="21px">
-          <Text as="span" color="aph.primary.100" w="18px">
-            2x
-          </Text>
-          <Text opacity="0.5">Replacement Earcups</Text>
-        </ListItem>
-        <ListItem display="flex" columnGap="21px">
-          <Text as="span" color="aph.primary.100" w="18px">
-            1x
-          </Text>
-          <Text opacity="0.5">User Manual</Text>
-        </ListItem>
-        <ListItem display="flex" columnGap="21px">
-          <Text as="span" color="aph.primary.100" w="18px">
-            1x
-          </Text>
-          <Text opacity="0.5">3.5mm 5m Audio Cable</Text>
-        </ListItem>
-        <ListItem display="flex" columnGap="21px">
-          <Text as="span" color="aph.primary.100" w="18px">
-            1x
-          </Text>
-          <Text opacity="0.5">Travel Bag</Text>
-        </ListItem>
+        {includes.map(({ quantity, item }, idx) => (
+          <ListItem key={idx} display="flex" columnGap="21px">
+            <Text as="span" color="aph.primary.100" w="18px">
+              {quantity}x
+            </Text>
+            <Text opacity="0.5">{item}</Text>
+          </ListItem>
+        ))}
       </List>
     </VStack>
   );

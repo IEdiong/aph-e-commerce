@@ -1,25 +1,34 @@
 import { Box, Flex, Heading, Image, VStack } from '@/utils/chakra-components';
 import Cta from './cta';
 
-const MoreProducts = () => {
+interface IProduct {
+  slug: string;
+  name: string;
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
+
+interface IProps {
+  others: IProduct[];
+}
+
+const MoreProducts = ({ others }: IProps) => {
   return (
     <VStack as="section" spacing="16">
       <Heading as="h2" textAlign="center" variant="h3">
         You may also like
       </Heading>
       <Flex columnGap="30px">
-        <ProductCard
-          productImgUrl="/assets/shared/desktop/image-xx99-mark-one-headphones.jpg"
-          productName="XX99 MARK I"
-        />
-        <ProductCard
-          productImgUrl="/assets/shared/desktop/image-xx59-headphones.jpg"
-          productName="XX59"
-        />
-        <ProductCard
-          productImgUrl="/assets/shared/desktop/image-zx9-speaker.jpg"
-          productName="ZX9 SPEAKERS"
-        />
+        {others.map(({ name, image }, idx) => (
+          <ProductCard
+            key={idx}
+            productImgUrl={image.desktop}
+            productName={name}
+          />
+        ))}
       </Flex>
     </VStack>
   );
