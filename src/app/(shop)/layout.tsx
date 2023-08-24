@@ -5,7 +5,6 @@ import { Providers } from '../providers';
 import NavBar from '@/components/nav';
 
 const manrope = Manrope({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
   title: 'Category | audiophile',
   description: 'Get the best audio devices for your listening',

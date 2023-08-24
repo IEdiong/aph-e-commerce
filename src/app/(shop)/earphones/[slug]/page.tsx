@@ -8,8 +8,13 @@ import Features from '@/components/features';
 import InTheBox from '@/components/in-the-box';
 import MoreProducts from '@/components/more-products';
 import Gallery from '@/components/gallery';
+import Data from '@/data/data.json';
 
-const EarphoneDetail = () => {
+const items = Data;
+
+const EarphoneDetail = ({ params }: { params: { slug: string } }) => {
+  const product = items[Number(params.slug) - 1];
+
   return (
     <Box as="main">
       <Container maxW="container.lg" px="0" pb="160px" pt="79px">
@@ -18,25 +23,24 @@ const EarphoneDetail = () => {
         </Suspense>
         <VStack mt="56px" spacing="160px" align="stretch">
           <ProductCard
-            productImageUrl="/assets/product-yx1-earphones/desktop/image-product.jpg"
-            productName="YX1 WIRELESS
-            EARPHONES"
-            summaryDescription="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
-            productPrice={599}
+            productImageUrl={product.image.desktop}
+            productName={product.name}
+            summaryDescription={product.description}
+            productPrice={product.price}
             canAddToCart={true}
-            isNew={true}
+            isNew={product.new}
             ctaText={'Add to cart'}
           />
           <Flex justify="flex-start" columnGap="125px">
-            <Features />
-            <InTheBox />
+            <Features features={product.features} />
+            <InTheBox includes={product.includes} />
           </Flex>
           <Gallery
-            imgOne="/assets/product-yx1-earphones/desktop/image-gallery-1.jpg"
-            imgTwo="/assets/product-yx1-earphones/desktop/image-gallery-2.jpg"
-            imgThree="/assets/product-yx1-earphones/desktop/image-gallery-3.jpg"
+            imgOne={product.gallery.first.desktop}
+            imgTwo={product.gallery.second.desktop}
+            imgThree={product.gallery.third.desktop}
           />
-          <MoreProducts />
+          <MoreProducts others={product.others} />
           <FeatureProducts />
           <InfoSection />
         </VStack>

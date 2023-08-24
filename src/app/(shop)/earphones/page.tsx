@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
 import ProductCard from '@/components/product-card';
 import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
+
+export const metadata: Metadata = {
+  title: 'Earphones | audiophile',
+  description: 'Get the best audio devices for your listening',
+};
 
 const EarphonesPage = () => {
   return (

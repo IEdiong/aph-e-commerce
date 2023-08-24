@@ -27,6 +27,7 @@ const MoreProducts = ({ others }: IProps) => {
             key={idx}
             productImgUrl={image.desktop}
             productName={name}
+            productPage={getUrl(name)}
           />
         ))}
       </Flex>
@@ -56,6 +57,36 @@ const ProductCard = ({
   );
 };
 
+function getUrl(productName: string) {
+  const idx = productLink[productName];
+  switch (idx) {
+    case 1:
+      return '/earphones/1';
+    case 2:
+      return '/headphones/2';
+    case 3:
+      return '/headphones/3';
+    case 4:
+      return '/headphones/4';
+    case 5:
+      return '/speakers/5';
+    case 6:
+      return '/speakers/6';
+  }
+}
+
+interface ProductLink {
+  [productName: string]: number;
+}
+
+const productLink: ProductLink = {
+  'YX1 Wireless Earphones': 1,
+  XX59: 2,
+  'XX99 Mark I': 3,
+  'XX99 Mark II': 4,
+  'ZX7 Speaker': 5,
+  'ZX9 Speaker': 6,
+};
 interface ProductCardProps {
   productImgUrl: string;
   productName: string;

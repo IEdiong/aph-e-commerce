@@ -52,7 +52,7 @@ export default function Home() {
                   deliver truly remarkable sound.
                 </Text>
               </VStack>
-              <Cta variant="black" w="160px" mt="40px">
+              <Cta to="/speakers/6" variant="black" w="160px" mt="40px">
                 See Product
               </Cta>
             </Box>
@@ -75,7 +75,7 @@ export default function Home() {
                 <Heading as="h2" variant="h4">
                   ZX7 SPEAKER
                 </Heading>
-                <Cta variant="outline" w="160px" mt="32px">
+                <Cta to="/speakers/5" variant="outline" w="160px" mt="32px">
                   See Product
                 </Cta>
               </Box>
@@ -101,7 +101,7 @@ export default function Home() {
                 <Heading as="h2" variant="h4">
                   YX1 EARPHONES
                 </Heading>
-                <Cta variant="outline" w="160px" mt="32px">
+                <Cta to="/earphones/1" variant="outline" w="160px" mt="32px">
                   See Product
                 </Cta>
               </Box>
