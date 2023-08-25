@@ -17,7 +17,7 @@ const SpeakerDetail = ({ params }: { params: { slug: string } }) => {
 
   return (
     <Box as="main">
-      <Container maxW="container.lg" px="0" pb="160px" pt="79px">
+      <Container pb="160px" pt="79px">
         <Suspense fallback={null}>
           <NavigateBack />
         </Suspense>

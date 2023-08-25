@@ -5,6 +5,7 @@ import Cta from './cta';
 import FormLabel from './form-label';
 import { inputTheme } from './input';
 import Link from './link';
+import Container from './container';
 
 // Colors
 const colors = {
@@ -49,10 +50,18 @@ const sizes = {
   },
 };
 
+// Breakpoint Size
+const breakpoints = {
+  base: '0em',
+  md: '46em', // tablet from 736px
+  lg: '78em', // desktop from 1248px
+};
+
 export const theme = extendTheme({
   colors,
   fontSizes,
   sizes,
+  breakpoints,
   components: {
     Heading,
     Text,
@@ -60,6 +69,7 @@ export const theme = extendTheme({
     FormLabel,
     Link,
     Input: inputTheme,
+    Container,
   },
   config: {
     cssVarPrefix: 'aph',
