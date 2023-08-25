@@ -28,9 +28,6 @@ const HeadphonesPage = () => {
       </Box>
       <Box as="main">
         <Container
-          w="89%"
-          maxW="container.lg"
-          px="0"
           pt={{ base: '64px', md: '120px', lg: '160px' }}
           pb={{ base: '120px', lg: '160px' }}
         >
