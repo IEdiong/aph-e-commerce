@@ -31,22 +31,19 @@ export default function RootLayout({
             h="729px"
           >
             <NavBar />
-            <Container
-              as="header"
-              w="89%"
-              maxW="container.lg"
-              px="0"
-              pt="128px"
-              pb="158px"
-            >
-              <Box w="430px" color="aph.white">
+            <Container as="header" pt="128px" pb="158px">
+              <Box
+                w={{ lg: '430px' }}
+                color="aph.white"
+                textAlign={{ base: 'center', lg: 'left' }}
+              >
                 <Text variant="overline" color="aph.white" opacity="0.5">
                   New product
                 </Text>
                 <Heading as="h1" variant="h1" my="6">
                   XX99 Mark II Headphones
                 </Heading>
-                <Text w="349px" opacity="0.75">
+                <Text mx={{ base: 'auto', lg: '0' }} w="349px" opacity="0.75">
                   Experience natural, lifelike audio and exceptional build
                   quality made for the passionate music enthusiast.
                 </Text>

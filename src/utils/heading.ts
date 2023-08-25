@@ -37,6 +37,10 @@ const Heading = defineStyleConfig({
       fontSize: 'lg',
       letterSpacing: '1.286px',
     },
+    'h6-sm': {
+      fontSize: 'md',
+      letterSpacing: '1.071px',
+    },
   },
   // The default `size` or `variant` values
   defaultProps: {

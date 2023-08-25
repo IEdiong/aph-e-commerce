@@ -18,9 +18,6 @@ const NavBar = ({
   return (
     <Box as="nav" bgColor={bgColor} color="aph.white">
       <Container
-        w="89%"
-        maxW={{ lg: 'container.lg' }}
-        px="0"
         py={'32px'}
         pos={'relative'}
         _after={{
