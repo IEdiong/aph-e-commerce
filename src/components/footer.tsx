@@ -36,7 +36,7 @@ export default function Footer() {
             height: '4px',
             backgroundColor: 'aph.primary.100',
           },
-          '@media (min-width: 704px)': {
+          '@media (min-width: 736px)': {
             '&::before': {
               left: '0%',
               transform: 'translateX(0%)',

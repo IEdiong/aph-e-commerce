@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
-import ProductCard from '@/components/product-card';
+import ProductCard from '@/components/product-card-cart';
 import { Box, Container, Flex, VStack } from '@/utils/chakra-components';
 import NavigateBack from '@/components/navigate-back';
 import Features from '@/components/features';
@@ -17,11 +17,15 @@ const SpeakerDetail = ({ params }: { params: { slug: string } }) => {
 
   return (
     <Box as="main">
-      <Container pb="160px" pt="79px">
+      <Container pb="160px" pt={{ base: '4', md: '33px', lg: '79px' }}>
         <Suspense fallback={null}>
           <NavigateBack />
         </Suspense>
-        <VStack mt="56px" spacing="160px" align="stretch">
+        <VStack
+          mt={{ base: '6', lg: '56px' }}
+          spacing={{ base: '120px', lg: '160px' }}
+          align="stretch"
+        >
           <ProductCard
             productImageUrl={product.image.desktop}
             productName={product.name}
@@ -31,7 +35,12 @@ const SpeakerDetail = ({ params }: { params: { slug: string } }) => {
             isNew={product.new}
             ctaText={'Add to cart'}
           />
-          <Flex justify="flex-start" columnGap="125px">
+          <Flex
+            flexDirection={{ base: 'column', lg: 'row' }}
+            justify="flex-start"
+            columnGap="125px"
+            rowGap="120px"
+          >
             <Features features={product.features} />
             <InTheBox includes={product.includes} />
           </Flex>

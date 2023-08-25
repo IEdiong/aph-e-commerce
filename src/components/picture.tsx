@@ -8,15 +8,6 @@ interface IProps {
 export default function Picture({ imgSmUrl, imgMdUrl, imgLgUrl, alt }: IProps) {
   return (
     <picture
-      // style={{
-      //   position: 'absolute',
-      //   top: '0',
-      //   left: '0',
-      //   width: '100%',
-      //   height: '100%',
-      //   objectFit: 'cover',
-      //   display: 'block',
-      // }}
       style={{
         height: '100%',
         objectFit: 'cover',
