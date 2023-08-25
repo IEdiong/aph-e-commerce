@@ -17,7 +17,7 @@ const HeadphonesPage = () => {
         </Heading>
       </Box>
       <Box as="main">
-        <Container maxW="container.lg" px="0" py="160px">
+        <Container w="89%" maxW="container.lg" px="0" py="160px">
           <VStack spacing={{ lg: '160px' }} align="stretch">
             <ProductCard
               productImageUrl="/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg"

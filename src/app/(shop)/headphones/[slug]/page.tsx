@@ -129,12 +129,10 @@ const items = Data;
 //   ],
 // };
 
-const HeadphoneDetail = ({ params }: { params: { slug: string } }) => {
-  // const res = await fetch('http://localhost:3000/api/earphone', {
-  //   method: 'GET',
-  // });
-  // const data = await res.json();
-  // console.log(`Product: ${data}`);
+const HeadphoneDetail = async ({ params }: { params: { slug: string } }) => {
+  // const res = await fetch('http://localhost:3000/api/earphone');
+  // const { data } = await res.json();
+  // console.log(`Product: ${data.id}`);
 
   const product = items[Number(params.slug) - 1];
 

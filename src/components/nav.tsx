@@ -6,6 +6,7 @@ import {
   Image,
   Link,
 } from '@/utils/chakra-components';
+import NavItem from './nav-item';
 
 const NavBar = ({
   bgColor = 'transparent',
@@ -15,6 +16,7 @@ const NavBar = ({
   return (
     <Box as="nav" bgColor={bgColor} color="aph.white">
       <Container
+        w="89%"
         maxW={{ lg: 'container.lg' }}
         px="0"
         py={{ lg: '32px' }}
@@ -52,20 +54,6 @@ const NavBar = ({
           </Link>
         </Flex>
       </Container>
-    </Box>
-  );
-};
-
-const NavItem = ({ text, to = '/' }: { text: string; to?: string }) => {
-  return (
-    <Box
-      as="li"
-      transition="color .4s ease-out"
-      _hover={{
-        color: 'aph.primary.100',
-      }}
-    >
-      <Link href={to}>{text}</Link>
     </Box>
   );
 };

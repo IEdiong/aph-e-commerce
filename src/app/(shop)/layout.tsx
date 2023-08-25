@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import { Providers } from '../providers';
 import NavBar from '@/components/nav';
+import Footer from '@/components/footer';
 
 const manrope = Manrope({ subsets: ['latin'] });
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Providers>
           <NavBar bgColor="aph.black.900" />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

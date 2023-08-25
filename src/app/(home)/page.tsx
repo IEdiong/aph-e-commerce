@@ -4,8 +4,6 @@ import InfoSection from '@/components/info-section';
 import {
   Heading,
   Text,
-  Link,
-  Flex,
   Container,
   Box,
   VStack,
@@ -16,7 +14,7 @@ import {
 export default function Home() {
   return (
     <Box as="main">
-      <Container maxW="container.lg" px="0">
+      <Container w="89%" maxW="container.lg" px="0">
         <Box mt="120px" mb="168px">
           <FeatureProducts />
         </Box>
@@ -112,7 +110,7 @@ export default function Home() {
           <InfoSection />
         </Box>
       </Container>
-      <Flex
+      {/* <Flex
         as="section"
         p="8"
         justify={'center'}
@@ -127,7 +125,7 @@ export default function Home() {
             here
           </Link>
         </Text>
-      </Flex>
+      </Flex> */}
     </Box>
   );
 }

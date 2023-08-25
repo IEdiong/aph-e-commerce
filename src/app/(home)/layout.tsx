@@ -5,6 +5,7 @@ import { Providers } from '../providers';
 import NavBar from '@/components/nav';
 import { Box, Container, Heading, Text } from '@/utils/chakra-components';
 import Cta from '@/components/cta';
+import Footer from '@/components/footer';
 
 const manrope = Manrope({ subsets: ['latin'] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             <NavBar />
             <Container
               as="header"
+              w="89%"
               maxW="container.lg"
               px="0"
               pt="128px"
@@ -55,6 +57,7 @@ export default function RootLayout({
             </Container>
           </Box>
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
