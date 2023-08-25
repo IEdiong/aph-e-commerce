@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Container,
   Flex,
   HStack,
@@ -7,6 +8,7 @@ import {
   Link,
 } from '@/utils/chakra-components';
 import NavItem from './nav-item';
+import { HamburgerIcon } from './icons';
 
 const NavBar = ({
   bgColor = 'transparent',
@@ -19,7 +21,7 @@ const NavBar = ({
         w="89%"
         maxW={{ lg: 'container.lg' }}
         px="0"
-        py={{ lg: '32px' }}
+        py={'32px'}
         pos={'relative'}
         _after={{
           content: '""',
@@ -33,7 +35,22 @@ const NavBar = ({
         }}
       >
         <Flex align="center" justify="space-between" pos="relative">
-          <Image src="/assets/shared/desktop/logo.svg" alt="" />
+          <HStack spacing={'42px'}>
+            <Button
+              p="0"
+              borderRadius="none"
+              minW="max-content"
+              h="max-content"
+              bg="transparent"
+              _hover={{
+                bg: 'transparent',
+              }}
+              display={{ base: 'inline-flex', lg: 'none' }}
+            >
+              <HamburgerIcon boxSize={'16px'} />
+            </Button>
+            <Image src="/assets/shared/desktop/logo.svg" alt="" />
+          </HStack>
           <HStack
             as="ul"
             spacing="34px"
@@ -43,6 +60,7 @@ const NavBar = ({
             pos="absolute"
             left="50%"
             transform="translateX(-50%)"
+            display={{ base: 'none', lg: 'flex' }}
           >
             <NavItem text="home" />
             <NavItem text="Headphones" to="/headphones" />
