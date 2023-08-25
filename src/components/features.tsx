@@ -4,7 +4,12 @@ const Features = ({ features }: { features: string }) => {
   const paragraphs = features.split('\n\n');
 
   return (
-    <VStack as="section" spacing="32px" align="flex-start" w="635px">
+    <VStack
+      as="section"
+      spacing="32px"
+      align="flex-start"
+      maxW={{ lg: '635px' }}
+    >
       <Heading as="h2" variant="h3">
         Features
       </Heading>

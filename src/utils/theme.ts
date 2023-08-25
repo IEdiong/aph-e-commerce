@@ -53,7 +53,7 @@ const sizes = {
 // Breakpoint Size
 const breakpoints = {
   base: '0em',
-  md: '44em', // tablet from 704px
+  md: '46em', // tablet from 736px
   lg: '64em', // desktop from 1024px
 };
 

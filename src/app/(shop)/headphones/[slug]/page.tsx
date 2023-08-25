@@ -142,7 +142,11 @@ const HeadphoneDetail = async ({ params }: { params: { slug: string } }) => {
         <Suspense fallback={null}>
           <NavigateBack />
         </Suspense>
-        <VStack mt={{ base: '6', lg: '56px' }} spacing="160px" align="stretch">
+        <VStack
+          mt={{ base: '6', lg: '56px' }}
+          spacing={{ base: '120px', lg: '160px' }}
+          align="stretch"
+        >
           <ProductCard
             productImageUrl={product.image.desktop}
             productName={product.name}
@@ -152,7 +156,12 @@ const HeadphoneDetail = async ({ params }: { params: { slug: string } }) => {
             isNew={product.new}
             ctaText={'Add to cart'}
           />
-          <Flex justify="flex-start" columnGap="125px">
+          <Flex
+            flexDirection={{ base: 'column', lg: 'row' }}
+            justify="flex-start"
+            columnGap="125px"
+            rowGap="120px"
+          >
             <Features features={product.features} />
             <InTheBox includes={product.includes} />
           </Flex>
