@@ -11,14 +11,30 @@ export const metadata: Metadata = {
 const HeadphonesPage = () => {
   return (
     <>
-      <Box as="header" bgColor="aph.black.900" py="98px" textAlign="center">
-        <Heading as="h1" variant="h2" color="aph.white">
+      <Box
+        as="header"
+        bgColor="aph.black.900"
+        pt={{ base: '32px', md: '105px', lg: '98px' }}
+        pb={{ base: '32px', md: '97px' }}
+        textAlign="center"
+      >
+        <Heading
+          as="h1"
+          variant={{ base: 'h2-sm', md: 'h2' }}
+          color="aph.white"
+        >
           Headphones
         </Heading>
       </Box>
       <Box as="main">
-        <Container w="89%" maxW="container.lg" px="0" py="160px">
-          <VStack spacing={{ lg: '160px' }} align="stretch">
+        <Container
+          w="89%"
+          maxW="container.lg"
+          px="0"
+          pt={{ base: '64px', md: '120px', lg: '160px' }}
+          pb={{ base: '120px', lg: '160px' }}
+        >
+          <VStack spacing={{ base: '120px', lg: '160px' }} align="stretch">
             <ProductCard
               productImageUrl="/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg"
               productName="XX99 Mark II Headphones"

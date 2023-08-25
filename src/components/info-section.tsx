@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, Text, VStack } from '@/utils/chakra-components';
+import Picture from './picture';
 
 const InfoSection = () => {
   return (
@@ -15,7 +16,12 @@ const InfoSection = () => {
         order={{ base: 0, lg: 1 }}
         flex={1}
       >
-        <Picture />
+        <Picture
+          imgSmUrl="/assets/shared/mobile/image-best-gear.jpg 654w"
+          imgMdUrl="/assets/shared/tablet/image-best-gear.jpg 1378w"
+          imgLgUrl="/assets/shared/desktop/image-best-gear.jpg 540w"
+          alt="best gear"
+        />
       </Box>
       <Box flex={1} order={{ base: 1, lg: 0 }}>
         <VStack
@@ -43,25 +49,5 @@ const InfoSection = () => {
     </Flex>
   );
 };
-
-function Picture() {
-  return (
-    <picture>
-      <source
-        media="(max-width: 575px)"
-        srcSet="/assets/shared/mobile/image-best-gear.jpg 654w"
-      />
-      <source
-        media="(min-width: 576px) and (max-width: 1023px)"
-        srcSet="/assets/shared/tablet/image-best-gear.jpg 1378w"
-      />
-      <source
-        media="(min-width: 1024px)"
-        srcSet="/assets/shared/desktop/image-best-gear.jpg 540w"
-      />
-      <img src="/assets/shared/desktop/image-best-gear.jpg" alt="best gear" />
-    </picture>
-  );
-}
 
 export default InfoSection;

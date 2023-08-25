@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Heading,
-  Image,
   VStack,
   Text,
   HStack,
@@ -11,6 +10,8 @@ import {
 import Cta from './cta';
 import { useState } from 'react';
 import Counter from './counter';
+import Picture from './picture';
+import convertDesktopSizeImg from '@/libs/get-img';
 
 const ProductCard = ({
   productImageUrl = '/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg',
@@ -45,21 +46,35 @@ const ProductCard = ({
 
   return (
     <Flex
-      flexDir={{ lg: direction == 'left-to-right' ? 'row' : 'row-reverse' }}
-      align={{ lg: 'center' }}
+      flexDir={{
+        base: 'column',
+        lg: direction == 'left-to-right' ? 'row' : 'row-reverse',
+      }}
+      align={'center'}
       justify={{ lg: 'flex-start' }}
       columnGap={{ lg: '125px' }}
+      textAlign={{ base: 'center', lg: 'left' }}
     >
-      <Box maxW="540px" borderRadius="lg" overflow="hidden">
-        <Image src={productImageUrl} alt="" display={'block'} />
+      <Box maxW={{ lg: '540px' }} borderRadius="lg" overflow="hidden">
+        <Picture
+          imgLgUrl={productImageUrl}
+          imgMdUrl={convertDesktopSizeImg(productImageUrl, 'tablet')}
+          imgSmUrl={convertDesktopSizeImg(productImageUrl, 'mobile')}
+          alt={productName}
+        />
       </Box>
-      <VStack w="445px" spacing="32px" align={{ lg: 'flex-start' }}>
+      <VStack
+        maxW={{ base: '560px', lg: '445px' }}
+        spacing="32px"
+        align={{ lg: 'flex-start' }}
+        mt={{ base: '52px', lg: '0px' }}
+      >
         {isNew && (
           <Text variant={'overline'} as="span" mb={-4}>
             NEW PRODUCT
           </Text>
         )}
-        <Heading as="h2" variant="h2">
+        <Heading as="h2" variant={{ base: 'h2-sm', md: 'h2' }}>
           {productName}
         </Heading>
         <Text opacity="0.5">{summaryDescription}</Text>
@@ -68,7 +83,12 @@ const ProductCard = ({
             <span>$</span> {price}
           </Text>
         )}
-        <HStack spacing={4} align="stretch" mt={2}>
+        <HStack
+          spacing={4}
+          align="stretch"
+          mt={{ base: -2, lg: 2 }}
+          justify={{ base: 'center', lg: 'flex-start' }}
+        >
           {canAddToCart && (
             <Counter
               increment={handleIncrement}
