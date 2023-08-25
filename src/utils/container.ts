@@ -6,7 +6,6 @@ const Container = defineStyleConfig({
     width: '89%',
     paddingInline: '0',
     maxWidth: {
-      base: 'container.sm',
       md: 'container.md',
       lg: 'container.lg',
     },

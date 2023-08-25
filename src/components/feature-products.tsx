@@ -27,8 +27,10 @@ const FeatureProducts = () => {
     <Flex
       as="section"
       columnGap={{ md: '10px', lg: '30px' }}
+      rowGap={'4'}
       justify="space-between"
       align="baseline"
+      flexDirection={{ base: 'column', md: 'row' }}
     >
       {features.map((feature) => (
         <FeatureCard
@@ -56,10 +58,14 @@ function FeatureCard({
       align="center"
       spacing="15px"
       w="full"
-      h={{ base: '245', lg: '284px' }}
+      h={{ base: '217px', md: '245px', lg: '284px' }}
       pos="relative"
     >
-      <Box w={{ base: '80%', lg: '65%' }} pos="absolute" zIndex="10">
+      <Box
+        w={{ base: '150px', md: '80%', lg: '65%' }}
+        pos="absolute"
+        zIndex="10"
+      >
         <Image src={imgUrl} alt="" />
       </Box>
       <VStack

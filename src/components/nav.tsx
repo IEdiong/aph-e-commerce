@@ -46,7 +46,13 @@ const NavBar = ({
             >
               <HamburgerIcon boxSize={'16px'} />
             </Button>
-            <Image src="/assets/shared/desktop/logo.svg" alt="" />
+            <Image
+              src="/assets/shared/desktop/logo.svg"
+              alt=""
+              pos={{ base: 'absolute', md: 'relative' }}
+              left={{ base: '50%', md: '' }}
+              transform={{ base: 'translateX(-50%)', md: '' }}
+            />
           </HStack>
           <HStack
             as="ul"

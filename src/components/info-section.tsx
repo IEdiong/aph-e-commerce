@@ -1,40 +1,67 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Text,
-  VStack,
-} from '@/utils/chakra-components';
+import { Box, Flex, Heading, Text, VStack } from '@/utils/chakra-components';
 
 const InfoSection = () => {
   return (
-    <Flex align="center" justify="space-between">
-      <VStack w="445px" spacing="32px">
-        <Heading as="h2" variant="h2">
-          Bringing you the{' '}
-          <Box as="span" color="aph.primary.100">
-            best
-          </Box>{' '}
-          audio gear
-        </Heading>
-        <Text>
-          Located at the heart of New York City, Audiophile is the premier store
-          for high end headphones, earphones, speakers, and audio accessories.
-          We have a large showroom and luxury demonstration rooms available for
-          you to browse and experience a wide range of our products. Stop by our
-          store to meet some of the fantastic people who make Audiophile the
-          best place to buy your portable audio equipment.
-        </Text>
-      </VStack>
-      <Box borderRadius="lg" overflow="hidden">
-        <Image
-          src="/assets/shared/desktop/image-best-gear.jpg"
-          alt="best gear"
-        />
+    <Flex
+      align="center"
+      justify="space-between"
+      columnGap={{ lg: '30px' }}
+      rowGap={{ base: '40px', md: '63px' }}
+      flexDirection={{ base: 'column', lg: 'row' }}
+    >
+      <Box
+        borderRadius="lg"
+        overflow="hidden"
+        order={{ base: 0, lg: 1 }}
+        flex={1}
+      >
+        <Picture />
+      </Box>
+      <Box flex={1} order={{ base: 1, lg: 0 }}>
+        <VStack
+          w={{ md: '573px', lg: '445px' }}
+          spacing="32px"
+          textAlign={{ base: 'center', lg: 'left' }}
+        >
+          <Heading as="h2" variant={{ base: 'h2-sm', md: 'h2' }}>
+            Bringing you the{' '}
+            <Box as="span" color="aph.primary.100">
+              best
+            </Box>{' '}
+            audio gear
+          </Heading>
+          <Text opacity={'0.5'}>
+            Located at the heart of New York City, Audiophile is the premier
+            store for high end headphones, earphones, speakers, and audio
+            accessories. We have a large showroom and luxury demonstration rooms
+            available for you to browse and experience a wide range of our
+            products. Stop by our store to meet some of the fantastic people who
+            make Audiophile the best place to buy your portable audio equipment.
+          </Text>
+        </VStack>
       </Box>
     </Flex>
   );
 };
+
+function Picture() {
+  return (
+    <picture>
+      <source
+        media="(max-width: 575px)"
+        srcSet="/assets/shared/mobile/image-best-gear.jpg 654w"
+      />
+      <source
+        media="(min-width: 576px) and (max-width: 1023px)"
+        srcSet="/assets/shared/tablet/image-best-gear.jpg 1378w"
+      />
+      <source
+        media="(min-width: 1024px)"
+        srcSet="/assets/shared/desktop/image-best-gear.jpg 540w"
+      />
+      <img src="/assets/shared/desktop/image-best-gear.jpg" alt="best gear" />
+    </picture>
+  );
+}
 
 export default InfoSection;

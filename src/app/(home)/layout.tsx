@@ -24,14 +24,26 @@ export default function RootLayout({
       <body className={manrope.className}>
         <Providers>
           <Box
-            bgImage={"url('/assets/home/desktop/image-hero.jpg')"}
+            bgImage={{
+              base: "url('/assets/home/mobile/image-header.jpg')",
+              md: "url('/assets/home/tablet/image-header.jpg')",
+              lg: "url('/assets/home/desktop/image-hero.jpg')",
+            }}
             bgRepeat={'no-repeat'}
             bgSize={'cover'}
-            bgPos={'top 0px right 30%'}
-            h="729px"
+            bgPos={{
+              base: 'center',
+              md: 'center',
+              lg: 'top 0px right 30%',
+            }}
+            h={{ base: '600px', md: '729px' }}
           >
             <NavBar />
-            <Container as="header" pt="128px" pb="158px">
+            <Container
+              as="header"
+              pt={{ base: '108px', md: '128px' }}
+              pb={{ lg: '158px' }}
+            >
               <Box
                 w={{ lg: '430px' }}
                 color="aph.white"
@@ -40,14 +52,28 @@ export default function RootLayout({
                 <Text variant="overline" color="aph.white" opacity="0.5">
                   New product
                 </Text>
-                <Heading as="h1" variant="h1" my="6">
+                <Heading
+                  as="h1"
+                  variant={{ base: 'h1-sm', md: 'h1' }}
+                  my={{ base: '4', md: '6' }}
+                >
                   XX99 Mark II Headphones
                 </Heading>
-                <Text mx={{ base: 'auto', lg: '0' }} w="349px" opacity="0.75">
+                <Text
+                  mx={{ base: 'auto', lg: '0' }}
+                  maxW={{ base: '328px', md: '349px' }}
+                  opacity="0.75"
+                  mt={{ base: '2', md: '0' }}
+                >
                   Experience natural, lifelike audio and exceptional build
                   quality made for the passionate music enthusiast.
                 </Text>
-                <Cta to="/headphones/4" variant="solid" w="160px" mt="40px">
+                <Cta
+                  to="/headphones/4"
+                  variant="solid"
+                  w="160px"
+                  mt={{ base: '28px', md: '40px' }}
+                >
                   See Product
                 </Cta>
               </Box>

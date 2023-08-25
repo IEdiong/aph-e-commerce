@@ -15,10 +15,19 @@ const Heading = defineStyleConfig({
       lineHeight: '58px',
       letterSpacing: '2px',
     },
+    'h1-sm': {
+      fontSize: '4xl',
+      lineHeight: '40px',
+      letterSpacing: '1.286px',
+    },
     h2: {
       fontSize: '5xl',
       lineHeight: '44px',
       letterSpacing: '1.429px',
+    },
+    'h2-sm': {
+      fontSize: '2xl',
+      letterSpacing: '1px',
     },
     h3: {
       fontSize: '3xl',
