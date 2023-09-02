@@ -70,7 +70,7 @@ const NavBar = ({
             <NavItem text="Speakers" to="/speakers" />
             <NavItem text="Earphones" to="/earphones" />
           </HStack>
-          <Link href="/">
+          <Link href="/checkout">
             <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
           </Link>
         </Flex>
