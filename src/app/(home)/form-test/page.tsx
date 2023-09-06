@@ -1,0 +1,65 @@
+'use client';
+import CustomRadioButton from '@/components/custom-radio';
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
+import { Field, Form, Formik } from 'formik';
+
+export interface FormValues {
+  firstname: string;
+  lastname: string;
+  stack: string;
+}
+
+export default function WahalaPage() {
+  return (
+    <Box py="8">
+      <Container maxW="container.sm">
+        <Formik
+          initialValues={{ firstname: '', lastname: '', stack: 'svelte' }}
+          onSubmit={(values) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+            }, 1000);
+          }}
+        >
+          {(props) => (
+            <Form>
+              <Field name="firstname">
+                {({ field }: { field: any }) => (
+                  <FormControl>
+                    <FormLabel>First name</FormLabel>
+                    <Input {...field} placeholder="First name" />
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="lastname">
+                {({ field }: { field: any }) => (
+                  <FormControl mt="4">
+                    <FormLabel>Last name</FormLabel>
+                    <Input {...field} placeholder="Last name" />
+                  </FormControl>
+                )}
+              </Field>
+
+              {/* <CustomRadio
+                data={['react', 'vue', 'svelte']}
+                formikProps={props}
+              /> */}
+
+              <CustomRadioButton formikProps={props} />
+              <Button mt="8" type="submit" colorScheme="twitter">
+                Submit
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    </Box>
+  );
+}
