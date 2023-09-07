@@ -2,49 +2,55 @@
 import { FormValues } from '@/utils/types';
 import {
   Box,
-  HStack,
   RadioGroup,
+  Text,
   UseRadioProps,
+  VStack,
   useRadio,
   useRadioGroup,
 } from '@chakra-ui/react';
 import { FormikProps } from 'formik';
-import { ReactNode } from 'react';
+import { CheckIcon } from './icons';
 
 interface RadioCardProps extends UseRadioProps {
-  children: ReactNode;
+  children: string;
   formikProps: FormikProps<FormValues>;
   value: string;
 }
 
 function RadioCard(props: RadioCardProps) {
-  const { getInputProps, getRadioProps } = useRadio(props);
+  const { state, getInputProps, getRadioProps } = useRadio(props);
 
   const input = getInputProps();
   const radiobutton = getRadioProps();
 
   return (
-    <Box as="label">
-      <input {...input} />
+    <Box as="label" w="full" h="56px">
+      <input {...input} hidden />
       <Box
         {...radiobutton}
         cursor="pointer"
         borderWidth="1px"
         borderRadius="md"
-        boxShadow="md"
+        fontWeight="bold"
+        display="flex"
+        alignItems="center"
+        columnGap="4"
         _checked={{
-          bg: 'teal.600',
-          color: 'white',
-          borderColor: 'teal.600',
+          borderColor: 'aph.primary.100',
+          borderWidth: '1px',
         }}
-        _focus={{
-          boxShadow: 'outline',
-        }}
-        px={5}
-        py={3}
-        onClick={() => props.formikProps.setFieldValue('stack', props.children)}
+        h="full"
+        px={4}
+        onClick={() =>
+          props.formikProps.setFieldValue('paymentMethod', props.value)
+        }
       >
-        {props.children}
+        <CheckIcon
+          boxSize={'20px'}
+          color={state.isChecked ? 'aph.primary.100' : 'transparent'}
+        />
+        <Text>{props.children}</Text>
       </Box>
     </Box>
   );
@@ -55,31 +61,39 @@ export default function CustomRadioButton({
 }: {
   formikProps: FormikProps<FormValues>;
 }) {
-  const options = ['react', 'vue', 'svelte'];
+  const options = [
+    {
+      name: 'e-money',
+      value: 'e-money',
+    },
+    {
+      name: 'Cash on Delivery',
+      value: 'cash',
+    },
+  ];
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'stack',
-    defaultValue: formikProps.initialValues.stack,
-    onChange: console.log,
+    name: 'paymentMethod',
+    defaultValue: formikProps.initialValues.paymentMethod,
   });
 
   const group = getRootProps();
 
   return (
-    <HStack as={RadioGroup} {...group}>
-      {options.map((value) => {
-        const radio = getRadioProps({ value });
+    <VStack as={RadioGroup} {...group} mt="4" spacing="4" align="flex-start">
+      {options.map((option) => {
+        const radio = getRadioProps({ value: option.value });
         return (
           <RadioCard
-            key={value}
+            key={option.value}
             {...radio}
             formikProps={formikProps}
-            value={value}
+            value={option.value}
           >
-            {value}
+            {option.name}
           </RadioCard>
         );
       })}
-    </HStack>
+    </VStack>
   );
 }

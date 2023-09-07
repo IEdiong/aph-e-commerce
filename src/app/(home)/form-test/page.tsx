@@ -7,25 +7,39 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useToast,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 
 export interface FormValues {
   firstname: string;
   lastname: string;
-  stack: string;
+  paymentMethod: string;
 }
 
 export default function WahalaPage() {
+  const toast = useToast();
+
   return (
     <Box py="8">
-      <Container maxW="container.sm">
+      <Container maxW={{ base: '255px', lg: '255px' }}>
         <Formik
-          initialValues={{ firstname: '', lastname: '', stack: 'svelte' }}
+          initialValues={{
+            firstname: '',
+            lastname: '',
+            paymentMethod: 'e-money',
+          }}
           onSubmit={(values) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+              console.log(JSON.stringify(values, null, 2));
             }, 1000);
+            toast({
+              status: 'success',
+              isClosable: true,
+              position: 'top-right',
+              description: 'You form has been submitted successfully',
+              duration: 5000,
+            });
           }}
         >
           {(props) => (
