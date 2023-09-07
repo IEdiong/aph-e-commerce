@@ -66,7 +66,7 @@ export default function WahalaPage() {
                 formikProps={props}
               /> */}
 
-              <CustomRadioButton formikProps={props} />
+              {/* <CustomRadioButton formikProps={props} /> */}
               <Button mt="8" type="submit" colorScheme="twitter">
                 Submit
               </Button>

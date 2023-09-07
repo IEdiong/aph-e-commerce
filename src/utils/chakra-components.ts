@@ -70,6 +70,7 @@ import {
   useRadio,
   useRadioGroup,
   useStyleConfig,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import { Link } from '@chakra-ui/next-js';
 
@@ -133,6 +134,7 @@ export {
   EditableInput,
   Avatar,
   AvatarBadge,
+  FormErrorMessage,
   useStyleConfig,
   AccordionIcon,
   useColorModeValue,

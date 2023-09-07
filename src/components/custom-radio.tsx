@@ -40,6 +40,10 @@ function RadioCard(props: RadioCardProps) {
           borderColor: 'aph.primary.100',
           borderWidth: '1px',
         }}
+        _hover={{
+          borderColor: 'aph.primary.100',
+          borderWidth: '1px',
+        }}
         h="full"
         px={4}
         onClick={() =>
@@ -50,7 +54,9 @@ function RadioCard(props: RadioCardProps) {
           boxSize={'20px'}
           color={state.isChecked ? 'aph.primary.100' : 'transparent'}
         />
-        <Text>{props.children}</Text>
+        <Text fontWeight={'bold'} fontSize={'sm'}>
+          {props.children}
+        </Text>
       </Box>
     </Box>
   );
@@ -63,7 +69,7 @@ export default function CustomRadioButton({
 }) {
   const options = [
     {
-      name: 'e-money',
+      name: 'e-Money',
       value: 'e-money',
     },
     {
@@ -80,7 +86,13 @@ export default function CustomRadioButton({
   const group = getRootProps();
 
   return (
-    <VStack as={RadioGroup} {...group} mt="4" spacing="4" align="flex-start">
+    <VStack
+      as={RadioGroup}
+      {...group}
+      spacing="4"
+      align="flex-start"
+      flex={{ md: 1 }}
+    >
       {options.map((option) => {
         const radio = getRadioProps({ value: option.value });
         return (
