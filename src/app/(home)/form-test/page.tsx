@@ -1,5 +1,4 @@
 'use client';
-import CustomRadioButton from '@/components/custom-radio';
 import {
   Box,
   Button,
@@ -42,7 +41,7 @@ export default function WahalaPage() {
             });
           }}
         >
-          {(props) => (
+          {() => (
             <Form>
               <Field name="firstname">
                 {({ field }: { field: any }) => (
