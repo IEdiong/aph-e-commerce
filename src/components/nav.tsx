@@ -143,7 +143,7 @@ function MobileNav({ onToggle, isOpen }: MobileNavProps) {
       </Container>
       <Box
         display={{ base: 'block', lg: 'none' }}
-        zIndex={12}
+        zIndex={isOpen ? 12 : -12}
         pos={'absolute'}
         h={isOpen ? 'auto' : '0'}
         w="full"
