@@ -1,14 +1,26 @@
 'use client';
-import { Button, useDisclosure, Text, Image } from '@/utils/chakra-components';
+import { CartSummary } from '@/app/(shop)/checkout/_components/cart';
 import {
+  Button,
+  useDisclosure,
+  VStack,
+  Image,
+  Heading,
+  Text,
+  Flex,
+} from '@/utils/chakra-components';
+import {
+  HStack,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/react';
+import Cta from './cta';
+import { useState } from 'react';
+import Counter from './counter';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,28 +43,101 @@ export default function CartIcon() {
       <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
+          <ModalHeader
+            textTransform="uppercase"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Heading variant="h6">cart (3)</Heading>
+            <Button
+              textDecoration="underline"
+              fontWeight="medium"
+              opacity="0.5"
+              p="0"
+              h="min-content"
+              background="transparent"
+              _hover={{
+                color: 'aph.primary.100',
+                opacity: '1',
+                background: 'transparent',
+              }}
+            >
+              Remove all
+            </Button>
+          </ModalHeader>
           <ModalBody>
-            <Text fontWeight="bold" mb="1rem">
-              You can scroll the content behind the modal
-            </Text>
-            <Text>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi
-              culpa libero, tempora ipsum corrupti adipisci cumque, aliquam
-              nobis rem repellat numquam, aut error amet dolorum rerum id
-              exercitationem. Quis, sint.
-            </Text>
+            <VStack
+              as="ul"
+              spacing={'6'}
+              align={'stretch'}
+              pt={{ base: '31px' }}
+              pb={{ base: '8' }}
+            >
+              <CartItem productPrice={2999} />
+              <CartItem productPrice={2999} />
+              <CartItem productPrice={2999} />
+            </VStack>
+            <CartSummary label="Total" price={5396} />
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Cta variant="solid" w="full" to="/checkout" onClick={onClose}>
+              ckeckout
+            </Cta>
           </ModalFooter>
         </ModalContent>
       </Modal>
     </>
+  );
+}
+
+function CartItem({ productPrice }: { productPrice: number }) {
+  const [price, setPrice] = useState<number>(productPrice);
+  const [count, setCount] = useState(1);
+  const initailPrice = productPrice;
+
+  const handleIncrement = () => {
+    let newCount = count + 1;
+    let newPrice = initailPrice * newCount;
+    setPrice(newPrice);
+    setCount(newCount);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      let newCount = count - 1;
+      let newPrice = price - initailPrice;
+      setPrice(newPrice);
+      setCount(newCount);
+    }
+  };
+  return (
+    <HStack as="li" justify={'space-between'}>
+      <HStack spacing={'4'}>
+        <Image
+          src="/assets/cart/image-zx9-speaker.jpg"
+          width={'64px'}
+          height={'64px'}
+          borderRadius={'lg'}
+          alt="zx9-speaker"
+        />
+        <VStack align={'flex-start'} spacing={'0'}>
+          <Text fontWeight={'bold'} textTransform={'uppercase'}>
+            zx9
+          </Text>
+          <Text opacity={'0.5'} fontSize={'14px'} fontWeight={'bold'}>
+            $ {price}
+          </Text>
+        </VStack>
+      </HStack>
+      <Flex align="stretch" h="10">
+        <Counter
+          increment={handleIncrement}
+          decrement={handleDecrement}
+          currentCount={count}
+        />
+      </Flex>
+    </HStack>
   );
 }
