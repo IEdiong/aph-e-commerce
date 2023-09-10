@@ -6,6 +6,7 @@ import FormLabel from './form-label';
 import { inputTheme } from './input';
 import Link from './link';
 import Container from './container';
+import { modalTheme } from './modal';
 
 // Colors
 const colors = {
@@ -70,6 +71,7 @@ export const theme = extendTheme({
     Link,
     Input: inputTheme,
     Container,
+    Modal: modalTheme,
   },
   config: {
     cssVarPrefix: 'aph',

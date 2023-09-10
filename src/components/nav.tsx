@@ -14,6 +14,7 @@ import { HamburgerIcon } from './icons';
 import { SlideFade } from '@chakra-ui/react';
 import { Fragment } from 'react';
 import FeatureProducts from './feature-products';
+import CartIcon from './cart';
 
 export default function NavBar({
   bgColor = 'transparent',
@@ -86,9 +87,7 @@ function DesktopNav() {
           <NavItem text="Speakers" to="/speakers" />
           <NavItem text="Earphones" to="/earphones" />
         </HStack>
-        <Link href="/checkout">
-          <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
-        </Link>
+        <CartIcon />
       </Flex>
     </Container>
   );
