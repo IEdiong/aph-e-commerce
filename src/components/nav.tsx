@@ -6,7 +6,6 @@ import {
   Flex,
   HStack,
   Image,
-  Link,
   useDisclosure,
 } from '@/utils/chakra-components';
 import NavItem from './nav-item';
@@ -135,9 +134,7 @@ function MobileNav({ onToggle, isOpen }: MobileNavProps) {
               transform={{ base: 'translateX(-50%)', md: '' }}
             />
           </HStack>
-          <Link href="/checkout">
-            <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
-          </Link>
+          <CartIcon />
         </Flex>
       </Container>
       <Box

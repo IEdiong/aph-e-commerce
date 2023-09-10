@@ -13,14 +13,25 @@ const baseStyle = definePartsStyle({
   dialog: {
     borderRadius: 'lg',
     marginInlineStart: 'auto',
-    marginInlineEnd: 'min(11vw, 14%)',
+    marginInlineEnd: {
+      base: '',
+      lg: 'min(11vw, 14%)',
+    },
     marginBlockStart: '8',
-    width: '377px',
+    width: {
+      base: 'full',
+      lg: '377px',
+    },
   },
   dialogContainer: {
     marginBlockStart: '92px',
     marginInlineStart: 'auto',
     display: 'block',
+    paddingInline: {
+      base: '5',
+      md: '10',
+      lg: '0',
+    },
   },
   header: {
     paddingBlockStart: '8',

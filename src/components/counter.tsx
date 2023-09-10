@@ -4,14 +4,16 @@ interface CounterProps {
   increment: () => void;
   decrement: () => void;
   currentCount: number;
+  paddingX?: string;
 }
 const Counter = ({
   increment,
   decrement,
   currentCount: count,
+  paddingX = '15.5px',
 }: CounterProps) => {
   return (
-    <Flex columnGap="20px" px="15.5px" bg="aph.neutral.100" align="center">
+    <Flex columnGap="20px" px={paddingX} bg="aph.neutral.100" align="center">
       <Box
         as="button"
         opacity="0.25"

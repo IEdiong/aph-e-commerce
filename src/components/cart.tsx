@@ -136,6 +136,7 @@ function CartItem({ productPrice }: { productPrice: number }) {
           increment={handleIncrement}
           decrement={handleDecrement}
           currentCount={count}
+          paddingX="2"
         />
       </Flex>
     </HStack>
