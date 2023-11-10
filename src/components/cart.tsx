@@ -10,6 +10,7 @@ import {
   Flex,
 } from '@/utils/chakra-components';
 import {
+  Box,
   HStack,
   Modal,
   ModalBody,
@@ -81,25 +82,39 @@ export default function CartIcon() {
             </Button>
           </ModalHeader>
           <ModalBody>
-            <VStack
-              as="ul"
-              spacing={'6'}
-              align={'stretch'}
-              pt={{ base: '31px' }}
-              pb={{ base: '8' }}
-            >
-              {cartItems.map((item) => (
-                <CartItem
-                  productName={item.name}
-                  productPrice={item.price}
-                  productQuantity={item.quantity}
-                  productUrl={item.image}
-                  productId={item.id}
-                  key={item.id}
-                />
-              ))}
-            </VStack>
-            <CartSummary label="Total" price={cartTotal} />
+            {cartItems.length === 0 ? (
+              <Box
+                pt="6"
+                textAlign="center"
+                textTransform="uppercase"
+                fontWeight="semibold"
+                fontSize="lg"
+              >
+                Cart is Empty 🌵🌵
+              </Box>
+            ) : (
+              <>
+                <VStack
+                  as="ul"
+                  spacing={'6'}
+                  align={'stretch'}
+                  pt={{ base: '31px' }}
+                  pb={{ base: '8' }}
+                >
+                  {cartItems.map((item) => (
+                    <CartItem
+                      productName={item.name}
+                      productPrice={item.price}
+                      productQuantity={item.quantity}
+                      productUrl={item.image}
+                      productId={item.id}
+                      key={item.id}
+                    />
+                  ))}
+                </VStack>
+                <CartSummary label="Total" price={cartTotal} />
+              </>
+            )}
           </ModalBody>
 
           <ModalFooter>
