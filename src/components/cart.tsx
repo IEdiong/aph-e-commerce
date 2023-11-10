@@ -23,7 +23,7 @@ import { useState } from 'react';
 import Counter from './counter';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
-import { emptyCart } from '@/state/features/cart/cartSlice';
+import { emptyCart, incrementQuantity } from '@/state/features/cart/cartSlice';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -90,6 +90,7 @@ export default function CartIcon() {
                   productPrice={item.price}
                   productQuantity={item.quantity}
                   productUrl={item.image}
+                  productId={item.id}
                   key={item.id}
                 />
               ))}
@@ -109,6 +110,7 @@ export default function CartIcon() {
 }
 
 type TCartItemProps = {
+  productId: number;
   productPrice: number;
   productName: string;
   productQuantity: number;
@@ -116,6 +118,7 @@ type TCartItemProps = {
 };
 
 function CartItem({
+  productId,
   productPrice,
   productName,
   productQuantity,
@@ -124,12 +127,14 @@ function CartItem({
   const [price, setPrice] = useState<number>(productPrice);
   const [count, setCount] = useState(productQuantity);
   const initailPrice = productPrice;
+  const dispatch = useDispatch();
 
   const handleIncrement = () => {
     let newCount = count + 1;
     let newPrice = initailPrice * newCount;
     setPrice(newPrice);
     setCount(newCount);
+    dispatch(incrementQuantity(productId));
   };
 
   const handleDecrement = () => {
@@ -154,7 +159,7 @@ function CartItem({
         />
         <VStack align={'flex-start'} spacing={'0'}>
           <Text fontWeight={'bold'} textTransform={'uppercase'}>
-            {productName}
+            {productName.split(' ')[0]}
           </Text>
           <Text opacity={'0.5'} fontSize={'14px'} fontWeight={'bold'}>
             $ {initailPrice}
