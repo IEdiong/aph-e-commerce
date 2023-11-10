@@ -1,11 +1,23 @@
 import { HStack, Image, VStack, Text } from '@/utils/chakra-components';
 
-export function CartItem() {
+type TCartItemProps = {
+  productPrice: number;
+  productName: string;
+  productQuantity: number;
+  productUrl: string;
+};
+
+export function CartItem({
+  productName,
+  productPrice,
+  productQuantity,
+  productUrl,
+}: TCartItemProps) {
   return (
     <HStack as="li" justify={'space-between'}>
       <HStack spacing={'4'}>
         <Image
-          src="/assets/cart/image-zx9-speaker.jpg"
+          src={productUrl}
           width={'64px'}
           height={'64px'}
           borderRadius={'lg'}
@@ -13,15 +25,15 @@ export function CartItem() {
         />
         <VStack align={'flex-start'} spacing={'0'}>
           <Text fontWeight={'bold'} textTransform={'uppercase'}>
-            zx9
+            {productName.split(' ')[0]}
           </Text>
           <Text opacity={'0.5'} fontSize={'14px'} fontWeight={'bold'}>
-            $ 2,999
+            $ {productPrice.toLocaleString()}
           </Text>
         </VStack>
       </HStack>
       <Text fontWeight={'bold'} opacity={'0.5'}>
-        x1
+        x{productQuantity}
       </Text>
     </HStack>
   );

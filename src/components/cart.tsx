@@ -90,7 +90,7 @@ export default function CartIcon() {
                 fontWeight="semibold"
                 fontSize="lg"
               >
-                Cart is Empty 🌵🌵
+                Your cart is Empty 🌵🌵
               </Box>
             ) : (
               <>

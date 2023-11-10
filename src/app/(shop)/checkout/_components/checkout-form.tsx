@@ -17,6 +17,8 @@ import * as yup from 'yup';
 import 'yup-phone';
 import { CartItem, CartSummary } from './cart';
 import InputField from '@/components/input-field';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/state/store';
 
 // const phoneRegExp = /^\+{2}$/;
 
@@ -46,6 +48,13 @@ const CheckoutSchema = yup.object().shape({
 });
 
 export default function CheckoutForm() {
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+  const vat = useSelector((state: RootState) => state.cart.vat);
+  const shippingFee = useSelector((state: RootState) => state.cart.shipping);
+
+  const grandTotal = cartTotal + shippingFee;
+
   return (
     <Formik
       initialValues={{
@@ -237,18 +246,38 @@ export default function CheckoutForm() {
                 pt={{ base: '31px' }}
                 pb={{ base: '8' }}
               >
-                <CartItem />
-                <CartItem />
-                <CartItem />
+                {cartItems.length === 0 ? (
+                  <Box
+                    pt="6"
+                    textAlign="center"
+                    textTransform="uppercase"
+                    fontWeight="semibold"
+                    fontSize="lg"
+                  >
+                    Your cart is Empty 🌵🌵
+                  </Box>
+                ) : (
+                  <>
+                    {cartItems.map((item) => (
+                      <CartItem
+                        key={item.id}
+                        productName={item.name}
+                        productPrice={item.price}
+                        productQuantity={item.quantity}
+                        productUrl={item.image}
+                      />
+                    ))}
+                  </>
+                )}
               </VStack>
               <VStack align={'stretch'} mb={{ base: '6' }}>
-                <CartSummary label="Total" price={5396} />
-                <CartSummary label="Shipping" price={50} />
-                <CartSummary label="Vat (included)" price={1079} />
+                <CartSummary label="Total" price={cartTotal} />
+                <CartSummary label="Shipping" price={shippingFee} />
+                <CartSummary label="Vat (included)" price={vat} />
               </VStack>
               <CartSummary
                 label="Grand Total"
-                price={5446}
+                price={grandTotal}
                 color="aph.primary.100"
               />
               <Button

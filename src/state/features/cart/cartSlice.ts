@@ -5,12 +5,16 @@ type CartState = {
   cartItems: TProduct[];
   cartQuantity: number;
   cartTotal: number;
+  vat: number;
+  shipping: number;
 };
 
 const initialState: CartState = {
   cartItems: [],
   cartQuantity: 0,
   cartTotal: 0,
+  vat: 0,
+  shipping: 0,
 };
 
 const cartSlice = createSlice({
@@ -31,6 +35,8 @@ const cartSlice = createSlice({
         (acc, item) => item.quantity * item.price + acc,
         0
       );
+      state.shipping = 50;
+      state.vat = parseInt((0.2 * state.cartTotal).toFixed(0));
     },
     incrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.cartItems.find((item) => item.id === action.payload);
@@ -39,6 +45,7 @@ const cartSlice = createSlice({
         (acc, item) => item.quantity * item.price + acc,
         0
       );
+      state.vat = parseInt((0.2 * state.cartTotal).toFixed(0));
     },
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.cartItems.find((item) => item.id === action.payload);
@@ -47,11 +54,14 @@ const cartSlice = createSlice({
         (acc, item) => item.quantity * item.price + acc,
         0
       );
+      state.vat = parseInt((0.2 * state.cartTotal).toFixed(0));
     },
     emptyCart: (state) => {
       state.cartItems = [];
       state.cartTotal = 0;
       state.cartQuantity = 0;
+      state.shipping = 0;
+      state.vat = 0;
     },
   },
 });
