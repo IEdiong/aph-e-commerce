@@ -23,7 +23,11 @@ import { useState } from 'react';
 import Counter from './counter';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
-import { emptyCart, incrementQuantity } from '@/state/features/cart/cartSlice';
+import {
+  decrementQuantity,
+  emptyCart,
+  incrementQuantity,
+} from '@/state/features/cart/cartSlice';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -145,6 +149,7 @@ function CartItem({
       let newPrice = price - initailPrice;
       setPrice(newPrice);
       setCount(newCount);
+      dispatch(decrementQuantity(productId));
     }
   };
   return (
