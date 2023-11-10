@@ -148,12 +148,8 @@ const HeadphoneDetail = async ({ params }: { params: { slug: string } }) => {
           align="stretch"
         >
           <ProductCard
-            productImageUrl={product.image.desktop}
-            productName={product.name}
-            summaryDescription={product.description}
-            productPrice={product.price}
+            product={product}
             canAddToCart={true}
-            isNew={product.new}
             ctaText={'Add to cart'}
           />
           <Flex

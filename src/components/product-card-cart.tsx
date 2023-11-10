@@ -7,31 +7,33 @@ import {
   Text,
   HStack,
 } from '@/utils/chakra-components';
-import Cta from './cta';
 import { useState } from 'react';
 import Counter from './counter';
 import Picture from './picture';
 import convertDesktopSizeImg from '@/libs/get-img';
+import CtaBtn from './cta-btn';
+import { TProduct } from '@/types';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/state/features/cart/cartSlice';
 
 const ProductCardCart = ({
-  productImageUrl = '/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg',
-  productName = 'XX99 Mark II Headphones',
-  summaryDescription = 'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
-  isNew = false,
+  product,
   canAddToCart = false,
-  productPrice = 0,
   ctaText = 'See Product',
-  ctaLink = '/',
 }: ProductCardProps) => {
+  const { name, description, price: productPrice, new: isNew, image } = product;
+  const { desktop: productImg } = image;
   const [price, setPrice] = useState<number>(productPrice);
   const [count, setCount] = useState(1);
   const initailPrice = productPrice;
+  const dispatch = useDispatch();
 
   const handleIncrement = () => {
     let newCount = count + 1;
     let newPrice = initailPrice * newCount;
     setPrice(newPrice);
     setCount(newCount);
+    console.log(price);
   };
 
   const handleDecrement = () => {
@@ -41,6 +43,19 @@ const ProductCardCart = ({
       setPrice(newPrice);
       setCount(newCount);
     }
+  };
+
+  const handleAddToCart = (product: IProduct) => {
+    const cartProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: count,
+      image: `/assets/cart/image-${product.slug}.jpg`,
+    } as TProduct;
+
+    console.log(cartProduct);
+    dispatch(addToCart(cartProduct));
   };
 
   return (
@@ -56,10 +71,10 @@ const ProductCardCart = ({
     >
       <Box borderRadius="lg" overflow="hidden" minW="281px">
         <Picture
-          imgLgUrl={productImageUrl}
-          imgMdUrl={convertDesktopSizeImg(productImageUrl, 'tablet')}
-          imgSmUrl={convertDesktopSizeImg(productImageUrl, 'mobile')}
-          alt={productName}
+          imgLgUrl={productImg}
+          imgMdUrl={convertDesktopSizeImg(productImg, 'tablet')}
+          imgSmUrl={convertDesktopSizeImg(productImg, 'mobile')}
+          alt={name}
         />
       </Box>
       <VStack
@@ -75,9 +90,9 @@ const ProductCardCart = ({
           </Text>
         )}
         <Heading as="h2" variant={{ base: 'h2-sm', lg: 'h2' }}>
-          {productName}
+          {name}
         </Heading>
-        <Text opacity="0.5">{summaryDescription}</Text>
+        <Text opacity="0.5">{description}</Text>
         {canAddToCart && (
           <Text fontSize="lg" fontWeight="bold" mb={{ base: '0px', md: '7px' }}>
             <span>$</span> {price}
@@ -91,25 +106,32 @@ const ProductCardCart = ({
               currentCount={count}
             />
           )}
-          <Cta variant="solid" w={{ lg: '160px' }} to={ctaLink}>
-            {ctaText}
-          </Cta>
+
+          <CtaBtn text={ctaText} onClick={() => handleAddToCart(product)} />
         </HStack>
       </VStack>
     </Flex>
   );
 };
 
+interface IProduct {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  new: boolean;
+  slug: string;
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
 interface ProductCardProps {
-  productImageUrl: string;
-  productName: string;
-  productPrice?: number;
-  summaryDescription: string;
-  isNew?: boolean;
+  product: IProduct;
   direction?: 'left-to-right' | 'right-to-left';
   canAddToCart?: boolean;
   ctaText?: string;
-  ctaLink?: string;
 }
 
 export default ProductCardCart;

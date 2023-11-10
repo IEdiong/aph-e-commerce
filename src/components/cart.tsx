@@ -21,9 +21,16 @@ import {
 import Cta from './cta';
 import { useState } from 'react';
 import Counter from './counter';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/state/store';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const cartItemsCount = useSelector(
+    (state: RootState) => state.cart.cartQuantity
+  );
+  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
 
   return (
     <>
@@ -49,7 +56,7 @@ export default function CartIcon() {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Heading variant="h6">cart (3)</Heading>
+            <Heading variant="h6">cart ({cartItemsCount})</Heading>
             <Button
               textDecoration="underline"
               fontWeight="medium"
@@ -74,11 +81,17 @@ export default function CartIcon() {
               pt={{ base: '31px' }}
               pb={{ base: '8' }}
             >
-              <CartItem productPrice={2999} />
-              <CartItem productPrice={2999} />
-              <CartItem productPrice={2999} />
+              {cartItems.map((item) => (
+                <CartItem
+                  productName={item.name}
+                  productPrice={item.price}
+                  productQuantity={item.quantity}
+                  productUrl={item.image}
+                  key={item.id}
+                />
+              ))}
             </VStack>
-            <CartSummary label="Total" price={5396} />
+            <CartSummary label="Total" price={cartTotal} />
           </ModalBody>
 
           <ModalFooter>
@@ -92,9 +105,21 @@ export default function CartIcon() {
   );
 }
 
-function CartItem({ productPrice }: { productPrice: number }) {
+type TCartItemProps = {
+  productPrice: number;
+  productName: string;
+  productQuantity: number;
+  productUrl: string;
+};
+
+function CartItem({
+  productPrice,
+  productName,
+  productQuantity,
+  productUrl,
+}: TCartItemProps) {
   const [price, setPrice] = useState<number>(productPrice);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(productQuantity);
   const initailPrice = productPrice;
 
   const handleIncrement = () => {
@@ -105,6 +130,8 @@ function CartItem({ productPrice }: { productPrice: number }) {
   };
 
   const handleDecrement = () => {
+    console.log(initailPrice);
+
     if (count > 1) {
       let newCount = count - 1;
       let newPrice = price - initailPrice;
@@ -116,7 +143,7 @@ function CartItem({ productPrice }: { productPrice: number }) {
     <HStack as="li" justify={'space-between'}>
       <HStack spacing={'4'}>
         <Image
-          src="/assets/cart/image-zx9-speaker.jpg"
+          src={productUrl}
           width={'64px'}
           height={'64px'}
           borderRadius={'lg'}
@@ -124,10 +151,10 @@ function CartItem({ productPrice }: { productPrice: number }) {
         />
         <VStack align={'flex-start'} spacing={'0'}>
           <Text fontWeight={'bold'} textTransform={'uppercase'}>
-            zx9
+            {productName}
           </Text>
           <Text opacity={'0.5'} fontSize={'14px'} fontWeight={'bold'}>
-            $ {price}
+            $ {initailPrice}
           </Text>
         </VStack>
       </HStack>
