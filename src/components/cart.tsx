@@ -21,8 +21,9 @@ import {
 import Cta from './cta';
 import { useState } from 'react';
 import Counter from './counter';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
+import { emptyCart } from '@/state/features/cart/cartSlice';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,6 +32,7 @@ export default function CartIcon() {
     (state: RootState) => state.cart.cartQuantity
   );
   const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -69,6 +71,7 @@ export default function CartIcon() {
                 opacity: '1',
                 background: 'transparent',
               }}
+              onClick={() => dispatch(emptyCart())}
             >
               Remove all
             </Button>
