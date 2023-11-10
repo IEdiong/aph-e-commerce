@@ -33,7 +33,6 @@ const ProductCardCart = ({
     let newPrice = initailPrice * newCount;
     setPrice(newPrice);
     setCount(newCount);
-    console.log(price);
   };
 
   const handleDecrement = () => {
@@ -54,7 +53,6 @@ const ProductCardCart = ({
       image: `/assets/cart/image-${product.slug}.jpg`,
     } as TProduct;
 
-    console.log(cartProduct);
     dispatch(addToCart(cartProduct));
   };
 
