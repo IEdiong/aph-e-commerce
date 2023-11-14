@@ -7,7 +7,6 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const baseStyle = definePartsStyle({
   // define the part you're going to style
   overlay: {
-    mt: '92px',
     bg: 'blackAlpha.400', //change the background
   },
   dialog: {
@@ -25,6 +24,9 @@ const baseStyle = definePartsStyle({
 });
 
 const cartModalStyle = definePartsStyle({
+  overlay: {
+    mt: '92px',
+  },
   dialog: {
     marginInlineStart: 'auto',
     marginInlineEnd: {

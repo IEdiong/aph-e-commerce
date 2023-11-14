@@ -11,7 +11,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
   Box,
   Flex,
   VStack,
@@ -19,20 +18,44 @@ import {
   Button,
 } from '@chakra-ui/react';
 
-import { RootState } from '@/state/store';
-import { useSelector } from 'react-redux';
 import { CartItem } from './cart';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/state/store';
+import { emptyCart } from '@/state/features/cart/cartSlice';
 
-export default function CheckoutModal() {
-  const { onClose } = useDisclosure();
+type TCheckoutModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  cartTotal: number;
+};
+
+export default function CheckoutModal({
+  isOpen,
+  onClose,
+  cartTotal,
+}: TCheckoutModalProps) {
+  const [isSingleItem, setSingleItem] = useState<boolean>(true);
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+
+  const dispatch = useDispatch();
+
+  const toggleItemsList = () => {
+    setSingleItem(!isSingleItem);
+  };
+
+  const handleModalClose = () => {
+    dispatch(emptyCart());
+    onClose();
+  };
 
   return (
     <Modal
       variant={'checkoutModalStyle'}
-      isOpen={true}
+      isOpen={isOpen}
       onClose={onClose}
+      blockScrollOnMount={false}
+      closeOnOverlayClick={false}
       isCentered
     >
       <ModalOverlay />
@@ -57,30 +80,48 @@ export default function CheckoutModal() {
             bg="aph.neutral.100"
             overflow="hidden"
           >
-            <Box p="6" flexBasis="246px" flexShrink="0">
+            <Box px="6" pt="6" pb="3" flexBasis="246px" flexShrink="0">
               <VStack as="ul" spacing={'6'} align={'stretch'}>
-                {cartItems.map((item) => (
+                {isSingleItem ? (
                   <CartItem
-                    productName={item.name}
-                    productPrice={item.price}
-                    productQuantity={item.quantity}
-                    productUrl={item.image}
-                    key={item.id}
+                    productName={cartItems[0]?.name}
+                    productPrice={cartItems[0]?.price}
+                    productQuantity={cartItems[0]?.quantity}
+                    productUrl={cartItems[0]?.image}
                   />
-                ))}
+                ) : (
+                  cartItems.map((item) => (
+                    <CartItem
+                      productName={item.name}
+                      productPrice={item.price}
+                      productQuantity={item.quantity}
+                      productUrl={item.image}
+                      key={item.id}
+                    />
+                  ))
+                )}
               </VStack>
               <Divider bg="aph.black.900" h="1px" opacity="0.08" mt="2" />
-              <Button w="full" _hover={{ bg: 'none' }} opacity="0.5">
-                View less
+              <Button
+                w="full"
+                h="30px"
+                _hover={{ bg: 'none' }}
+                opacity="0.5"
+                onClick={toggleItemsList}
+              >
+                {isSingleItem
+                  ? `and ${cartItems.length - 1} other item(s)`
+                  : 'View less'}
               </Button>
             </Box>
             <VStack
               align="baseline"
-              justify="center"
+              justify="flex-end"
               bg="aph.black.900"
               color="aph.white"
               w="full"
-              p="8"
+              paddingInline="8"
+              paddingBlockEnd="10"
               textTransform="uppercase"
             >
               <Text opacity="0.5">Grand total</Text>
@@ -92,7 +133,7 @@ export default function CheckoutModal() {
         </ModalBody>
 
         <ModalFooter>
-          <Cta to="/" onClick={onClose} w="full">
+          <Cta to="/" onClick={handleModalClose} w="full">
             back to home
           </Cta>
         </ModalFooter>

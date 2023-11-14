@@ -11,6 +11,7 @@ import {
   Button,
   Grid,
   GridItem,
+  useDisclosure,
 } from '@/utils/chakra-components';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
@@ -19,6 +20,7 @@ import { CartItem, CartSummary } from './cart';
 import InputField from '@/components/input-field';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
+import CheckoutModal from './checkout-modal';
 
 // const phoneRegExp = /^\+{2}$/;
 
@@ -48,6 +50,7 @@ const CheckoutSchema = yup.object().shape({
 });
 
 export default function CheckoutForm() {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
   const vat = useSelector((state: RootState) => state.cart.vat);
@@ -69,9 +72,10 @@ export default function CheckoutForm() {
         eMoneyNumber: '',
         eMoneyPin: '',
       }}
-      onSubmit={(values) => {
+      onSubmit={() => {
         setTimeout(() => {
-          console.log(JSON.stringify(values, null, 2));
+          // console.log(JSON.stringify(values, null, 2));
+          onOpen();
         }, 1000);
       }}
       validationSchema={CheckoutSchema}
@@ -298,6 +302,11 @@ export default function CheckoutForm() {
               >
                 CONTINUE & PAY
               </Button>
+              <CheckoutModal
+                isOpen={isOpen}
+                onClose={onClose}
+                cartTotal={grandTotal}
+              />
             </Box>
           </Flex>
         </Form>
