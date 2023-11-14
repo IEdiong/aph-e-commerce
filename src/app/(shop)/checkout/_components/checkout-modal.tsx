@@ -54,7 +54,6 @@ export default function CheckoutModal({
       variant={'checkoutModalStyle'}
       isOpen={isOpen}
       onClose={onClose}
-      blockScrollOnMount={false}
       closeOnOverlayClick={false}
       isCentered
     >
@@ -62,10 +61,7 @@ export default function CheckoutModal({
       <ModalContent>
         <ModalHeader>
           <SuccessIcon boxSize={16} />
-          <Heading
-            variant={{ base: 'h2-sm', md: 'h3' }}
-            mt={{ base: '8', md: '8' }}
-          >
+          <Heading variant={{ base: 'h2-sm', md: 'h3' }} mt="8">
             Thank you <br /> for your order
           </Heading>
           <Text mt="6" opacity="0.5">
@@ -74,13 +70,20 @@ export default function CheckoutModal({
         </ModalHeader>
         <ModalBody>
           <Flex
+            flexDir={{ base: 'column', md: 'row' }}
             align="stretch"
             w="full"
             borderRadius="lg"
             bg="aph.neutral.100"
             overflow="hidden"
           >
-            <Box px="6" pt="6" pb="3" flexBasis="246px" flexShrink="0">
+            <Box
+              px="6"
+              pt="6"
+              pb="3"
+              flexBasis={{ base: '140px', md: '246px' }}
+              flexShrink="0"
+            >
               <VStack as="ul" spacing={'6'} align={'stretch'}>
                 {isSingleItem ? (
                   <CartItem
@@ -105,8 +108,10 @@ export default function CheckoutModal({
               <Button
                 w="full"
                 h="30px"
-                _hover={{ bg: 'none' }}
                 opacity="0.5"
+                fontSize="12px"
+                fontWeight="bold"
+                _hover={{ bg: 'none' }}
                 onClick={toggleItemsList}
               >
                 {isSingleItem
@@ -120,13 +125,14 @@ export default function CheckoutModal({
               bg="aph.black.900"
               color="aph.white"
               w="full"
-              paddingInline="8"
-              paddingBlockEnd="10"
+              paddingInline={{ base: '6', md: '8' }}
+              paddingBlockStart={{ base: '15px', md: '0' }}
+              paddingBlockEnd={{ base: '19px', md: '10' }}
               textTransform="uppercase"
             >
               <Text opacity="0.5">Grand total</Text>
               <Text fontWeight="bold" fontSize="lg">
-                $ {cartTotal}
+                $ {cartTotal.toLocaleString()}
               </Text>
             </VStack>
           </Flex>

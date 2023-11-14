@@ -69,8 +69,14 @@ const cartModalStyle = definePartsStyle({
 
 const checkoutModalStyle = {
   dialog: {
-    padding: '48px',
-    maxWidth: '540px',
+    padding: { base: '8', md: '12' },
+    maxWidth: {
+      base: '327px',
+      md: '540px',
+    },
+  },
+  dialogContainer: {
+    paddingBlock: '16',
   },
   body: {
     paddingBlockStart: '8',
