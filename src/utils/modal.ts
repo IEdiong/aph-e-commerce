@@ -48,6 +48,7 @@ const cartModalStyle = definePartsStyle({
       md: '10',
       lg: '0',
     },
+    paddingBlockEnd: '62px',
   },
   header: {
     paddingBlockStart: '8',
