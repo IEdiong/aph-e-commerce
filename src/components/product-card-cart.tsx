@@ -15,6 +15,7 @@ import CtaBtn from './cta-btn';
 import { TProduct } from '@/types';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/state/features/cart/cartSlice';
+import { useToast } from '@chakra-ui/react';
 
 const ProductCardCart = ({
   product,
@@ -27,6 +28,7 @@ const ProductCardCart = ({
   const [count, setCount] = useState(1);
   const initailPrice = productPrice;
   const dispatch = useDispatch();
+  const toast = useToast();
 
   const handleIncrement = () => {
     let newCount = count + 1;
@@ -54,6 +56,14 @@ const ProductCardCart = ({
     } as TProduct;
 
     dispatch(addToCart(cartProduct));
+    toast({
+      status: 'info',
+      title: `${count} unit${count > 1 ? 's' : ''} of "${product.name}" has been
+      added to your cart`,
+      variant: 'left-accent',
+      colorScheme: 'orange',
+      position: 'bottom-left',
+    });
   };
 
   return (
