@@ -13,6 +13,15 @@ const baseStyle = definePartsStyle({
   dialog: {
     borderRadius: 'lg',
   },
+  header: {
+    padding: '0',
+  },
+  body: {
+    padding: '0',
+  },
+  footer: {
+    padding: '0',
+  },
 });
 
 const cartModalStyle = definePartsStyle({
@@ -55,7 +64,18 @@ const cartModalStyle = definePartsStyle({
   },
 });
 
-const checkoutModalStyle = {};
+const checkoutModalStyle = {
+  dialog: {
+    padding: '48px',
+    maxWidth: '540px',
+  },
+  body: {
+    paddingBlockStart: '8',
+  },
+  footer: {
+    marginBlockStart: '12',
+  },
+};
 
 export const modalTheme = defineMultiStyleConfig({
   baseStyle,

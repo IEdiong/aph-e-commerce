@@ -141,7 +141,7 @@ type TCartItemProps = {
   productUrl: string;
 };
 
-function CartItem({
+export function CartItem({
   productId,
   productPrice,
   productName,

@@ -14,7 +14,7 @@ export function CartItem({
   productUrl,
 }: TCartItemProps) {
   return (
-    <HStack as="li" justify={'space-between'}>
+    <HStack as="li" justify={'space-between'} align={'flex-start'}>
       <HStack spacing={'4'}>
         <Image
           src={productUrl}
@@ -32,7 +32,7 @@ export function CartItem({
           </Text>
         </VStack>
       </HStack>
-      <Text fontWeight={'bold'} opacity={'0.5'}>
+      <Text fontWeight={'bold'} opacity={'0.5'} paddingBlockStart={'6px'}>
         x{productQuantity}
       </Text>
     </HStack>
