@@ -12,6 +12,11 @@ const baseStyle = definePartsStyle({
   },
   dialog: {
     borderRadius: 'lg',
+  },
+});
+
+const cartModalStyle = definePartsStyle({
+  dialog: {
     marginInlineStart: 'auto',
     marginInlineEnd: {
       base: '',
@@ -50,6 +55,9 @@ const baseStyle = definePartsStyle({
   },
 });
 
+const checkoutModalStyle = {};
+
 export const modalTheme = defineMultiStyleConfig({
   baseStyle,
+  variants: { cartModalStyle, checkoutModalStyle },
 });

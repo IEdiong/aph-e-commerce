@@ -54,7 +54,12 @@ export default function CartIcon() {
         <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
       </Button>
 
-      <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
+      <Modal
+        variant={'cartModalStyle'}
+        blockScrollOnMount={true}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader

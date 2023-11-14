@@ -3,6 +3,7 @@ import { Box, Container } from '@/utils/chakra-components';
 
 import { Suspense } from 'react';
 import CheckoutForm from './_components/checkout-form';
+import CheckoutModal from './_components/checkout-modal';
 
 export default function CheckoutPage() {
   return (
@@ -13,6 +14,7 @@ export default function CheckoutPage() {
         </Suspense>
 
         <CheckoutForm />
+        <CheckoutModal />
       </Container>
     </Box>
   );
