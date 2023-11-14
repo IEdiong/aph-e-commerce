@@ -11,16 +11,22 @@ import {
 import NavItem from './nav-item';
 import { HamburgerIcon } from './icons';
 import { SlideFade } from '@chakra-ui/react';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import FeatureProducts from './feature-products';
 import CartIcon from './cart';
+import { usePathname } from 'next/navigation';
 
 export default function NavBar({
   bgColor = 'transparent',
 }: {
   bgColor?: 'transparent' | 'aph.black.900';
 }) {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    onClose();
+  }, [onClose, pathname]);
 
   return (
     <Box as="nav" bgColor={bgColor} color="aph.white" pos={'relative'}>
