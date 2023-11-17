@@ -18,8 +18,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useToast,
 } from '@chakra-ui/react';
-import Cta from './cta';
 import { useState } from 'react';
 import Counter from './counter';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,6 +29,8 @@ import {
   emptyCart,
   incrementQuantity,
 } from '@/state/features/cart/cartSlice';
+import CtaBtn from './cta-btn';
+import { useRouter } from 'next/navigation';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,6 +40,23 @@ export default function CartIcon() {
   );
   const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const toast = useToast();
+
+  const handleCheckout = () => {
+    if (cartItems.length < 1) {
+      toast({
+        status: 'info',
+        title: 'There is nothing to checkout. Your cart is empty.',
+        variant: 'left-accent',
+        colorScheme: 'red',
+        position: 'top',
+      });
+    } else {
+      onClose();
+      router.push('/checkout');
+    }
+  };
 
   return (
     <>
@@ -147,9 +166,12 @@ export default function CartIcon() {
           </ModalBody>
 
           <ModalFooter>
-            <Cta variant="solid" w="full" to="/checkout" onClick={onClose}>
-              ckeckout
-            </Cta>
+            <CtaBtn
+              variant="solid"
+              w="full"
+              text="checkout"
+              onClick={handleCheckout}
+            />
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -172,26 +194,18 @@ export function CartItem({
   productQuantity,
   productUrl,
 }: TCartItemProps) {
-  const [price, setPrice] = useState<number>(productPrice);
   const [count, setCount] = useState(productQuantity);
-  const initailPrice = productPrice;
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
     let newCount = count + 1;
-    let newPrice = initailPrice * newCount;
-    setPrice(newPrice);
     setCount(newCount);
     dispatch(incrementQuantity(productId));
   };
 
   const handleDecrement = () => {
-    console.log(initailPrice);
-
-    if (count > 1) {
+    if (count > 0) {
       let newCount = count - 1;
-      let newPrice = price - initailPrice;
-      setPrice(newPrice);
       setCount(newCount);
       dispatch(decrementQuantity(productId));
     }
@@ -211,7 +225,7 @@ export function CartItem({
             {productName.split(' ')[0]}
           </Text>
           <Text opacity={'0.5'} fontSize={'14px'} fontWeight={'bold'}>
-            $ {initailPrice}
+            $ {productPrice}
           </Text>
         </VStack>
       </HStack>

@@ -49,7 +49,16 @@ const cartSlice = createSlice({
     },
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.cartItems.find((item) => item.id === action.payload);
-      if (item) item.quantity--;
+      if (item) {
+        if (item.quantity === 1) {
+          state.cartItems = state.cartItems.filter(
+            (p) => p.id !== action.payload
+          );
+          state.cartQuantity--;
+        } else {
+          item.quantity--;
+        }
+      }
       state.cartTotal = state.cartItems.reduce(
         (acc, item) => item.quantity * item.price + acc,
         0
