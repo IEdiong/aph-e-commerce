@@ -21,6 +21,7 @@ import InputField from '@/components/input-field';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/state/store';
 import CheckoutModal from './checkout-modal';
+import { PaymentIcon } from '@/components/icons';
 
 // const phoneRegExp = /^\+{2}$/;
 
@@ -212,7 +213,7 @@ export default function CheckoutForm() {
                   </Text>
                   <CustomRadioButton formikProps={props} />
                 </Flex>
-                {props.values.paymentMethod === 'e-money' && (
+                {props.values.paymentMethod === 'e-money' ? (
                   <Grid
                     gridRowGap={{ base: '4', md: '6' }}
                     gridColumnGap={{ md: '4' }}
@@ -232,6 +233,23 @@ export default function CheckoutForm() {
                       placeholder="6891"
                     />
                   </Grid>
+                ) : (
+                  <Flex
+                    mt="30px"
+                    flexDir={{ base: 'column', md: 'row' }}
+                    columnGap="8"
+                    rowGap="4"
+                    align={{ base: 'flex-start', md: 'center' }}
+                    justify="flex-start"
+                  >
+                    <PaymentIcon boxSize="12" />
+                    <Text opacity="0.5">
+                      The &lsquo;Cash on Delivery&rsquo; option enables you to
+                      pay in cash when our delivery courier arrives at your
+                      residence. Just make sure your address is correct so that
+                      your order will not be cancelled.
+                    </Text>
+                  </Flex>
                 )}
               </FormControl>
             </Box>

@@ -5,3 +5,4 @@ export { default as TwitterIcon } from './twitter-icon';
 export { default as HamburgerIcon } from './hamburger-icon';
 export { default as CheckIcon } from './check-icon';
 export { default as SuccessIcon } from './success-icon';
+export { default as PaymentIcon } from './payment-icon';
