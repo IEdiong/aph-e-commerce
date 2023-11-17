@@ -24,24 +24,18 @@ const ProductCardCart = ({
 }: ProductCardProps) => {
   const { name, description, price: productPrice, new: isNew, image } = product;
   const { desktop: productImg } = image;
-  const [price, setPrice] = useState<number>(productPrice);
   const [count, setCount] = useState(1);
-  const initailPrice = productPrice;
   const dispatch = useDispatch();
   const toast = useToast();
 
   const handleIncrement = () => {
     let newCount = count + 1;
-    let newPrice = initailPrice * newCount;
-    setPrice(newPrice);
     setCount(newCount);
   };
 
   const handleDecrement = () => {
     if (count > 1) {
       let newCount = count - 1;
-      let newPrice = price - initailPrice;
-      setPrice(newPrice);
       setCount(newCount);
     }
   };
@@ -103,7 +97,7 @@ const ProductCardCart = ({
         <Text opacity="0.5">{description}</Text>
         {canAddToCart && (
           <Text fontSize="lg" fontWeight="bold" mb={{ base: '0px', md: '7px' }}>
-            <span>$</span> {price}
+            <span>$</span> {productPrice}
           </Text>
         )}
         <HStack spacing={4} align="stretch" mt={2} justify={'flex-start'}>
