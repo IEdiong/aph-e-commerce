@@ -46,12 +46,36 @@ export default function CartIcon() {
         h="28px"
         minW="28px"
         bg="transparent"
+        pos="relative"
         _hover={{
           backgroundColor: 'transparent',
         }}
         onClick={onOpen}
       >
         <Image src="/assets/shared/desktop/icon-cart.svg" alt="" />
+        {cartItems.length < 1 ? null : (
+          <Box
+            as="span"
+            pos="absolute"
+            display="inline-flex"
+            alignItems="center"
+            justifyContent="center"
+            right="0px"
+            top="0px"
+            w="5"
+            h="5"
+            px="3"
+            py="3"
+            borderRadius="full"
+            transform="translate(50%, -40%)"
+            bg="aph.primary.100"
+            color="aph.white"
+            fontSize="xs"
+            fontWeight="semibold"
+          >
+            {cartItems.length > 3 ? '3+' : `${cartItems.length}`}
+          </Box>
+        )}
       </Button>
 
       <Modal
