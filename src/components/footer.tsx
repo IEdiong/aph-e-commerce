@@ -23,7 +23,8 @@ export default function Footer() {
         w="89%"
         maxW="container.lg"
         px="0"
-        py="75px"
+        pt="75px"
+        pb="12"
         position="relative"
         sx={{
           '&::before': {
