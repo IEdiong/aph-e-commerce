@@ -17,9 +17,9 @@ const InfoSection = () => {
         flex={1}
       >
         <Picture
-          imgSmUrl="/assets/shared/mobile/image-best-gear.jpg 654w"
-          imgMdUrl="/assets/shared/tablet/image-best-gear.jpg 1378w"
-          imgLgUrl="/assets/shared/desktop/image-best-gear.jpg 540w"
+          imgSmUrl="/assets/shared/mobile/image-best-gear.jpg"
+          imgMdUrl="/assets/shared/tablet/image-best-gear.jpg"
+          imgLgUrl="/assets/shared/desktop/image-best-gear.jpg"
           alt=""
         />
       </Box>
