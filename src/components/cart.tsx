@@ -30,7 +30,7 @@ import {
   incrementQuantity,
 } from '@/state/features/cart/cartSlice';
 import CtaBtn from './cta-btn';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 export default function CartIcon() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,19 +42,24 @@ export default function CartIcon() {
   const dispatch = useDispatch();
   const router = useRouter();
   const toast = useToast();
+  const id = 'invalid-checkout-toast';
 
   const handleCheckout = () => {
-    if (cartItems.length < 1) {
+    if (!(cartItems.length < 1)) {
+      onClose();
+      router.push('/checkout');
+      return;
+    }
+
+    if (!toast.isActive(id)) {
       toast({
+        id,
         status: 'info',
         title: 'There is nothing to checkout. Your cart is empty.',
         variant: 'left-accent',
         colorScheme: 'red',
         position: 'top',
       });
-    } else {
-      onClose();
-      router.push('/checkout');
     }
   };
 

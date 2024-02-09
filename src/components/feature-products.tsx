@@ -80,7 +80,7 @@ function FeatureCard({
         spacing="15px"
         justify="flex-end"
       >
-        <Heading as="h6" variant={{ base: 'h6-sm', lg: 'h6' }}>
+        <Heading as="h2" variant={{ base: 'h6-sm', lg: 'h6' }}>
           {title}
         </Heading>
         <ShopLink to={to} w="160px">

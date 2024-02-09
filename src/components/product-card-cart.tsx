@@ -27,6 +27,7 @@ const ProductCardCart = ({
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
   const toast = useToast();
+  const id = 'add-to-cart-toast';
 
   const handleIncrement = () => {
     let newCount = count + 1;
@@ -50,14 +51,19 @@ const ProductCardCart = ({
     } as TProduct;
 
     dispatch(addToCart(cartProduct));
-    toast({
-      status: 'info',
-      title: `${count} unit${count > 1 ? 's' : ''} of "${product.name}" has been
-      added to your cart`,
-      variant: 'left-accent',
-      colorScheme: 'orange',
-      position: 'bottom-left',
-    });
+    if (!toast.isActive(id)) {
+      toast({
+        id,
+        status: 'info',
+        title: `${count} unit${count > 1 ? 's' : ''} of "${
+          product.name
+        }" has been
+        added to your cart`,
+        variant: 'left-accent',
+        colorScheme: 'orange',
+        position: 'bottom-left',
+      });
+    }
   };
 
   return (

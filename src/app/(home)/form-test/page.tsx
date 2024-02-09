@@ -18,6 +18,7 @@ export interface FormValues {
 
 export default function WahalaPage() {
   const toast = useToast();
+  const id = 'form-submit-success';
 
   return (
     <Box py="8">
@@ -32,13 +33,16 @@ export default function WahalaPage() {
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
             }, 1000);
-            toast({
-              status: 'success',
-              isClosable: true,
-              position: 'top-right',
-              description: 'You form has been submitted successfully',
-              duration: 5000,
-            });
+            if (!toast.isActive(id)) {
+              toast({
+                id,
+                status: 'success',
+                isClosable: true,
+                position: 'top-right',
+                description: 'You form has been submitted successfully',
+                duration: 5000,
+              });
+            }
           }}
         >
           {() => (
