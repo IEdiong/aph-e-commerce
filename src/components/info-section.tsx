@@ -20,7 +20,7 @@ const InfoSection = () => {
           imgSmUrl="/assets/shared/mobile/image-best-gear.jpg 654w"
           imgMdUrl="/assets/shared/tablet/image-best-gear.jpg 1378w"
           imgLgUrl="/assets/shared/desktop/image-best-gear.jpg 540w"
-          alt="best gear"
+          alt=""
         />
       </Box>
       <Box flex={1} order={{ base: 1, lg: 0 }}>

@@ -28,7 +28,6 @@
     "framer-motion": "^10.12.22",
     "next": "13.4.10",
     "next-nprogress-bar": "^2.1.2",
-    "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.1.3",

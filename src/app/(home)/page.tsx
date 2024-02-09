@@ -182,21 +182,3 @@ function GridItemThree() {
     </Box>
   );
 }
-{
-  /* <Flex
-        as="section"
-        p="8"
-        justify={'center'}
-        align={'center'}
-        flexDir="column"
-        minH="100vh"
-      >
-        <Heading mt="-12">Work in progress...</Heading>
-        <Text>
-          Check out the style guide{' '}
-          <Link href="/style-guide" color={'aph.primary.100'}>
-            here
-          </Link>
-        </Text>
-      </Flex> */
-}

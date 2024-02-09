@@ -11,7 +11,6 @@ export default function Picture({ imgSmUrl, imgMdUrl, imgLgUrl, alt }: IProps) {
       style={{
         height: '100%',
         objectFit: 'cover',
-
         display: 'block',
       }}
     >
@@ -24,6 +23,8 @@ export default function Picture({ imgSmUrl, imgMdUrl, imgLgUrl, alt }: IProps) {
       <img
         style={{ height: '100%', objectFit: 'cover', display: 'block' }}
         src={imgSmUrl}
+        width="654"
+        height="600"
         alt={alt}
       />
     </picture>
