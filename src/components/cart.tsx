@@ -61,6 +61,7 @@ export default function CartIcon() {
   return (
     <>
       <Button
+        aria-label={isOpen ? 'close cart' : 'open cart'}
         p="0"
         h="28px"
         minW="28px"
