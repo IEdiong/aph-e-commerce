@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [frontendmentor](https://www.frontendmentor.io/solutions/audiophile-ecommerce-with-nextjs-chakraui-and-reduxtoolkit-5p2XNzGoRG)
-- Live Site URL: [here](https://aph-e-commerce.vercel.app/)
+- Live Site URL: [aph-e-commerce.vercel.app](https://aph-e-commerce.vercel.app/)
 
 ## My process
 
