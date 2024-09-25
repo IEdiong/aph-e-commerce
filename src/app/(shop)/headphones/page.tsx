@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
-import ProductCard from '@/components/product-card';
+import * as ProductCard from '@/components/product-card-cart';
 import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
+import Data from '@/data/data.json';
 
 export const metadata: Metadata = {
   title: 'Headphones | audiophile',
@@ -32,28 +33,7 @@ const HeadphonesPage = () => {
           pb={{ base: '120px', lg: '160px' }}
         >
           <VStack spacing={{ base: '120px', lg: '160px' }} align="stretch">
-            <ProductCard
-              productImageUrl="/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg"
-              productName="XX99 Mark II Headphones"
-              summaryDescription="The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound."
-              isNew={true}
-              ctaLink="/headphones/4"
-            />
-            <ProductCard
-              productImageUrl="/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg"
-              productName="XX99 Mark I
-              Headphones"
-              summaryDescription="As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go."
-              direction="right-to-left"
-              ctaLink="/headphones/3"
-            />
-            <ProductCard
-              productImageUrl="/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg"
-              productName="XX59
-              Headphones"
-              summaryDescription="Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move."
-              ctaLink="/headphones/2"
-            />
+            <ProductList />
             <FeatureProducts />
             <InfoSection />
           </VStack>
@@ -61,6 +41,44 @@ const HeadphonesPage = () => {
       </Box>
     </>
   );
+};
+
+const ProductList = () => {
+  const PRODUCTS = Data.filter((data) => data.category === 'headphones')
+    .reverse()
+    .map((data, idx) => {
+      const direction = (
+        idx % 2 === 0 ? 'left-to-right' : 'right-to-left'
+      ) as ProductCard.IDirection;
+      return { ...data, direction };
+    });
+
+  return PRODUCTS.map((product) => (
+    <ProductCard.Root
+      key={product.id}
+      product={product}
+      canAddToCart={false}
+      direction={product.direction}
+    >
+      <ProductCard.Image
+        src={product.categoryImage.desktop}
+        alt={product.name}
+      />
+      <ProductCard.Content>
+        <ProductCard.New />
+        <ProductCard.CardHeading>{product.name}</ProductCard.CardHeading>
+        <ProductCard.Description>{product.description}</ProductCard.Description>
+        <ProductCard.Price>{product.price}</ProductCard.Price>
+        <ProductCard.Actions>
+          <ProductCard.CardCounter />
+          <ProductCard.CardButton>Add to cart</ProductCard.CardButton>
+          <ProductCard.CardLink to={`/headphones/${product.id}`}>
+            See product
+          </ProductCard.CardLink>
+        </ProductCard.Actions>
+      </ProductCard.Content>
+    </ProductCard.Root>
+  ));
 };
 
 export default HeadphonesPage;

@@ -12,10 +12,27 @@ import Counter from './counter';
 import Picture from './picture';
 import convertDesktopSizeImg from '@/libs/get-img';
 import CtaBtn from './cta-btn';
+import Cta from './cta';
 import { TProduct } from '@/types';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/state/features/cart/cartSlice';
 import { useToast } from '@chakra-ui/react';
+
+interface IProduct {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  new: boolean;
+  slug: string;
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+}
+
+export type IDirection = 'left-to-right' | 'right-to-left';
 
 const ProductCardContext = createContext({
   isNew: false,
@@ -24,18 +41,21 @@ const ProductCardContext = createContext({
   decrement: () => {},
   currentCount: 1,
   product: {} as IProduct,
+  variant: 'summary',
 });
 
 type ProductCardProps = {
   product: IProduct;
-  direction?: 'left-to-right' | 'right-to-left';
+  direction?: IDirection;
   canAddToCart?: boolean;
-  ctaText?: string;
+  variant?: 'summary' | 'detail';
 } & PropsWithChildren;
 
 export const Root = ({
   product,
   canAddToCart = false,
+  direction = 'left-to-right',
+  variant = 'detail',
   children,
 }: ProductCardProps) => {
   const { new: isNew } = product;
@@ -62,12 +82,18 @@ export const Root = ({
         decrement: handleDecrement,
         currentCount: count,
         product,
+        variant,
       }}
     >
       <Flex
         flexDir={{
           base: 'column',
-          md: 'row',
+          md: canAddToCart ? 'row' : 'column',
+          lg: canAddToCart
+            ? 'row'
+            : direction == 'left-to-right'
+            ? 'row'
+            : 'row-reverse',
         }}
         align={{ md: 'stretch', lg: 'center' }}
         justify={{ lg: 'flex-start' }}
@@ -85,8 +111,10 @@ type ProductCardImageProps = {
   alt: string;
 };
 export const Image = ({ src, alt }: ProductCardImageProps) => {
+  // const { variant } = useContext(ProductCardContext);
+
   return (
-    <Box borderRadius="lg" overflow="hidden" minW="281px">
+    <Box minW="281px" borderRadius="lg" overflow="hidden">
       <Picture
         imgLgUrl={src}
         imgMdUrl={convertDesktopSizeImg(src, 'tablet')}
@@ -230,31 +258,17 @@ export const CardButton = ({ children }: ProductCardButtonProps) => {
   );
 };
 
-interface IProduct {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  new: boolean;
-  slug: string;
-  image: {
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-}
+type ProductCardLinkProps = {
+  to: string;
+} & PropsWithChildren;
+export const CardLink = ({ to, children }: ProductCardLinkProps) => {
+  const { canAddToCart } = useContext(ProductCardContext);
 
-{
-  /* <ProductCardImage src={productImg} alt={name} />
-<ProductCardContent>
-  <ProductCardNew />
-  <ProductCardHeading>{name}</ProductCardHeading>
-  <ProductCardDescription>{description}</ProductCardDescription>
-  <ProductCardPrice>{productPrice}</ProductCardPrice>
-  <ProductCardActions>
-    <ProductCardCounter />
-
-    <ProductCardButton>Add to cart</ProductCardButton>
-  </ProductCardActions>
-</ProductCardContent>  */
-}
+  return (
+    !canAddToCart && (
+      <Cta variant="solid" w="160px" to={to}>
+        {children}
+      </Cta>
+    )
+  );
+};

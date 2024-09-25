@@ -195,6 +195,7 @@ const Card = ({
         <ProductCard.Actions>
           <ProductCard.CardCounter />
           <ProductCard.CardButton>Add to cart</ProductCard.CardButton>
+          {/* <ProductCard.CardLink to="/">See product</ProductCard.CardLink> */}
         </ProductCard.Actions>
       </ProductCard.Content>
     </ProductCard.Root>
