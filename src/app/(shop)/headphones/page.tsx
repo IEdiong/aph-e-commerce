@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
+import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
-import * as ProductCard from '@/components/product-card-cart';
-import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
-import Data from '@/data/data.json';
+import ProductList from '@/components/product-list';
 
 export const metadata: Metadata = {
   title: 'Headphones | audiophile',
@@ -33,7 +32,7 @@ const HeadphonesPage = () => {
           pb={{ base: '120px', lg: '160px' }}
         >
           <VStack spacing={{ base: '120px', lg: '160px' }} align="stretch">
-            <ProductList />
+            <ProductList category="headphones" />
             <FeatureProducts />
             <InfoSection />
           </VStack>
@@ -41,44 +40,6 @@ const HeadphonesPage = () => {
       </Box>
     </>
   );
-};
-
-const ProductList = () => {
-  const PRODUCTS = Data.filter((data) => data.category === 'headphones')
-    .reverse()
-    .map((data, idx) => {
-      const direction = (
-        idx % 2 === 0 ? 'left-to-right' : 'right-to-left'
-      ) as ProductCard.IDirection;
-      return { ...data, direction };
-    });
-
-  return PRODUCTS.map((product) => (
-    <ProductCard.Root
-      key={product.id}
-      product={product}
-      canAddToCart={false}
-      direction={product.direction}
-    >
-      <ProductCard.Image
-        src={product.categoryImage.desktop}
-        alt={product.name}
-      />
-      <ProductCard.Content>
-        <ProductCard.New />
-        <ProductCard.CardHeading>{product.name}</ProductCard.CardHeading>
-        <ProductCard.Description>{product.description}</ProductCard.Description>
-        <ProductCard.Price>{product.price}</ProductCard.Price>
-        <ProductCard.Actions>
-          <ProductCard.CardCounter />
-          <ProductCard.CardButton>Add to cart</ProductCard.CardButton>
-          <ProductCard.CardLink to={`/headphones/${product.id}`}>
-            See product
-          </ProductCard.CardLink>
-        </ProductCard.Actions>
-      </ProductCard.Content>
-    </ProductCard.Root>
-  ));
 };
 
 export default HeadphonesPage;

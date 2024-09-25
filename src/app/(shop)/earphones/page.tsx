@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
+import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
-import ProductCard from '@/components/product-card';
-import { Box, Container, Heading, VStack } from '@/utils/chakra-components';
+import ProductList from '@/components/product-list';
 
 export const metadata: Metadata = {
   title: 'Earphones | audiophile',
@@ -33,14 +33,7 @@ const EarphonesPage = () => {
           pb={{ base: '120px', lg: '160px' }}
         >
           <VStack spacing={{ base: '120px', lg: '160px' }} align="stretch">
-            <ProductCard
-              productImageUrl="/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg"
-              productName="YX1 WIRELESS
-              EARPHONES"
-              summaryDescription="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
-              isNew={true}
-              ctaLink={'/earphones/1'}
-            />
+            <ProductList category="earphones" />
             <FeatureProducts />
             <InfoSection />
           </VStack>

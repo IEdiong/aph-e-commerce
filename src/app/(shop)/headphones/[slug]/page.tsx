@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import FeatureProducts from '@/components/feature-products';
 import InfoSection from '@/components/info-section';
-import * as ProductCard from '@/components/product-card-cart';
 import { Box, Container, Flex, VStack } from '@/utils/chakra-components';
 import NavigateBack from '@/components/navigate-back';
 import Features from '@/components/features';
@@ -9,6 +8,7 @@ import InTheBox from '@/components/in-the-box';
 import MoreProducts from '@/components/more-products';
 import Gallery from '@/components/gallery';
 import Data from '@/data/data.json';
+import Card from '@/components/card';
 
 // async function getData() {
 //   const res = await fetch('http://localhost:3000/api/earphone', {
@@ -174,31 +174,6 @@ const HeadphoneDetail = async ({ params }: { params: { slug: string } }) => {
         </VStack>
       </Container>
     </Box>
-  );
-};
-
-const Card = ({
-  product,
-  canAddToCart,
-}: {
-  product: any;
-  canAddToCart: boolean;
-}) => {
-  return (
-    <ProductCard.Root product={product} canAddToCart={canAddToCart}>
-      <ProductCard.Image src={product.image.desktop} alt={product.name} />
-      <ProductCard.Content>
-        <ProductCard.New />
-        <ProductCard.CardHeading>{product.name}</ProductCard.CardHeading>
-        <ProductCard.Description>{product.description}</ProductCard.Description>
-        <ProductCard.Price>{product.price}</ProductCard.Price>
-        <ProductCard.Actions>
-          <ProductCard.CardCounter />
-          <ProductCard.CardButton>Add to cart</ProductCard.CardButton>
-          {/* <ProductCard.CardLink to="/">See product</ProductCard.CardLink> */}
-        </ProductCard.Actions>
-      </ProductCard.Content>
-    </ProductCard.Root>
   );
 };
 
