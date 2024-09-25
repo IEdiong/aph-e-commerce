@@ -59,6 +59,7 @@ export default function CartIcon() {
         variant: 'left-accent',
         colorScheme: 'red',
         position: 'top',
+        isClosable: true,
       });
     }
   };

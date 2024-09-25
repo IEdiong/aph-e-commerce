@@ -267,6 +267,7 @@ export const CardButton = ({ children }: ProductCardButtonProps) => {
         variant: 'left-accent',
         colorScheme: 'orange',
         position: 'bottom-left',
+        isClosable: true,
       });
     }
   };
