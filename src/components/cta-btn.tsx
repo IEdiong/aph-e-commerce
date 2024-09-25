@@ -3,7 +3,7 @@ import { Button } from '@/utils/chakra-components';
 import { ButtonProps, forwardRef } from '@chakra-ui/react';
 
 interface TCtaProps extends ButtonProps {
-  text: string;
+  text?: string;
 }
 
 const CtaBtn = forwardRef<TCtaProps, 'button'>((props, ref) => {
@@ -27,7 +27,7 @@ const CtaBtn = forwardRef<TCtaProps, 'button'>((props, ref) => {
       ref={ref}
       {...props}
     >
-      {props.text}
+      {props.children}
     </Button>
   );
 });

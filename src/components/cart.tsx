@@ -172,12 +172,9 @@ export default function CartIcon() {
           </ModalBody>
 
           <ModalFooter>
-            <CtaBtn
-              variant="solid"
-              w="full"
-              text="checkout"
-              onClick={handleCheckout}
-            />
+            <CtaBtn variant="solid" w="full" onClick={handleCheckout}>
+              checkout
+            </CtaBtn>
           </ModalFooter>
         </ModalContent>
       </Modal>

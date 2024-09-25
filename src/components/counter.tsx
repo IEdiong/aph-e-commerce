@@ -13,7 +13,13 @@ const Counter = ({
   paddingX = '15.5px',
 }: CounterProps) => {
   return (
-    <Flex columnGap="20px" px={paddingX} bg="aph.neutral.100" align="center">
+    <Flex
+      columnGap="20px"
+      px={paddingX}
+      bg="aph.neutral.100"
+      align="center"
+      minH={10}
+    >
       <Box
         as="button"
         opacity="0.25"
